@@ -1,0 +1,17 @@
+.loginHeader,
+.signupHeader{
+    font-family: 'Rouge Script', sans-serif;
+    font-size: 118px;
+    color: rgb(60, 11, 69);
+    text-align: center;
+}
+
+.loginContainer,
+.signupContainer{
+    text-align: center;
+    border: 2px solid rgb(60, 11, 69);
+    height: 500px;
+    width: 600px;
+    margin: 0 auto;
+    border-radius: 25px;
+}
