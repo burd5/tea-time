@@ -4,3 +4,19 @@
     color: rgb(60, 11, 69);
     text-align: center;
 }
+
+.collection,
+.generator{
+    font-size: 84px;
+    border: 3px solid rgb(60, 11, 69);
+    border-radius: 15px;
+    width: 40%;
+}
+
+.findTeaImg{
+    height: 400px;
+    width: 400px;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
