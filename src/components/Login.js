@@ -8,7 +8,7 @@ function Login() {
     <div className="login">
         <h1 className="loginHeader">Login</h1>
         <div className="loginContainer bg-white">
-            <form class="rounded px-8 pt-6 pb-8 mb-4" action="">
+            <form class="rounded px-8 pt-6 pb-8 mb-4" action="/login" method="GET">
             <div class="mb-4">
                 <label class="block text-lg font-bold mb-2" for="username">
                     Username
@@ -22,7 +22,7 @@ function Login() {
                 <input class="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
             </div>
             <div class="flex-col items-center">
-                <button class="loginButton" type="button">
+                <button class="loginButton" type="Submit">
                     Sign In
                 </button>
                 <Link to={'/'}>

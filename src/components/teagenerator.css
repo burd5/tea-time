@@ -1,0 +1,49 @@
+.teagenerator{
+    font-family: 'Rouge Script', sans-serif;
+    font-size: 118px;
+    color: rgb(60, 11, 69);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.teaForm{
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    background: #fff;
+    margin: 0 auto;
+    border: 2px solid rgb(60, 11, 69);
+    width: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.teaType{
+    height: 250px;
+    width: 700px;
+    font-size: 34px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: left;
+    row-gap: 20px;
+    margin-left: 60px;
+    font-family: 'Source Sans Pro';
+}
+
+.teaQuestion{
+    margin-bottom: 20px;
+    font-size: 38px;
+    font-family: 'Source Sans Pro';
+    text-align: left;
+    margin-left: 60px;
+    font-weight: bold;
+}
+
+.teaQuizButton{
+    font-size: 30px;
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 200px;
+    margin-top: 30px;
+}

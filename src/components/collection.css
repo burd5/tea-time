@@ -1,0 +1,47 @@
+.collections{
+    font-family: 'Rouge Script', sans-serif;
+    font-size: 118px;
+    color: rgb(60, 11, 69);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.teaList{
+    font-size: 44px;
+    list-style: none;
+    font-family: 'Source Sans Pro';
+    display: flex;
+    flex-wrap: wrap;
+    gap:50px;
+    justify-content: center;
+}
+
+.teaDesc{
+    font-size: 24px;
+    width: 250px;
+}
+
+.teaListImg{
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    border: 2px solid rgb(60, 11, 69);
+}
+
+.profile{
+    width: 250px;
+}
+
+.teaButton{
+    width: fit-content;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid rgb(60, 11, 69);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.teaButton:hover{
+    background-color: rgb(239, 210, 199);
+}
