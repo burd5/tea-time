@@ -51,7 +51,7 @@ app.get('/formResponse', async (req,res) => {
     ] )
 
    
-    res.send(search)
+    console.log(search, types)
   
   } catch (error) {
     console.log(error)

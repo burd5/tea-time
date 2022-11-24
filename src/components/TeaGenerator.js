@@ -1,52 +1,157 @@
-import React, { useState} from 'react'
+import React from 'react'
+import { Formik, Field, Form } from 'formik'
 import './teagenerator.css'
-import axios from "axios";
-
 
 function TeaGenerator(){
-    
-    const [type, setType] = useState()
 
-    const handleTypeChange = (e) => {
-        setType(e.target.value)
-    }
+    return(
+    <div class="teaForm">
+    <Formik
+      initialValues={{
+        type: '',
+        flavor: '',
+        region: '',
+        caffeine: ''
+      }}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500));
+        alert(JSON.stringify(values, null, 2));
+      }}
+    >
+      {({ values }) => (
+        <Form>
+        <h1 class="teagenerator">Tea Generator</h1>
+          <div class="teaQuestion" id="type">Pick a type:</div>
+          <div class="questions" role="group" aria-labelledby="type">
+            <label>
+              <Field class="answer" type="radio" name="type" value="black" />
+              Black
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="green" />
+              Green
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="white" />
+              White
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="oolong" />
+              Oolong
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="puerh" />
+              Puerh
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="herbal" />
+              Herbal
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="type" value="roobius" />
+              Roobius
+            </label>
+          </div>
 
-    const [region, setRegion] = useState()
+          <div class="teaQuestion" id="flavor">Pick a flavor:</div>
+          <div class="questions" role="group" aria-labelledby="flavor">
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="vegetal" />
+              Vegetal
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="savory" />
+              Savory
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="nutty" />
+              Nutty/Toasty
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="floral" />
+              Floral
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="earthy" />
+              Earthy
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="fruity" />
+              Fruity
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="sweet" />
+              Sweet
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="mineral" />
+              Mineral
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="flavor" value="spicy" />
+              Spicy
+            </label>
+          </div>
 
-    const handleRegionChange = (e) => {
-        setRegion(e.target.value)
-    }
+          <div class="teaQuestion" id="region">Pick a region:</div>
+          <div class="questions" role="group" aria-labelledby="region">
+            <label>
+              <Field class="answer" type="radio" name="region" value="china" />
+              China
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="region" value="india" />
+              India
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="region" value="japan" />
+              Japan
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="region" value="srilanka" />
+              Sri Lanka
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="region" value="africa" />
+              Africa
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="region" value="all" />
+              All regions
+            </label>
+          </div>
 
-    const [flavor, setFlavor] = useState()
+          <div class="teaQuestion" id="caffeine">Pick a caffeine strength:</div>
+          <div class="questions" role="group" aria-labelledby="caffeine">
+            <label>
+              <Field class="answer" type="radio" name="caffeine" value="high" />
+              High
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="caffeine" value="medium" />
+              Medium
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="caffeine" value="low" />
+              Low
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="caffeine" value="none" />
+              None
+            </label>
+            <label>
+              <Field class="answer" type="radio" name="caffeine" value="all" />
+              All levels
+            </label>
+          </div>
 
-    const handleFlavorChange = (e) => {
-        setFlavor(e.target.value)
-    }
-
-    const [caffeine, setCaffeine] = useState()
-
-    const handleCaffeineChange = (e) => {
-        setCaffeine(e.target.value)
-    }
-
-
-    
-        
-        
-        /*const value = e.target.value;
-        const checked = e.target.checked;
-        console.log(value, checked);
-        if(checked){
-            setCheckboxes([
-                ...checkboxes, value
-            ])
-        } else{
-            setCheckboxes(checkboxes.filter( (e) => (e !== value)))
-        }
-    }*/
-
-    
-    const handleSubmit = (e) => {
+          <button class="teaQuizButton" type="submit">Submit</button>
+        </Form>
+      )}
+    </Formik>
+  </div>
+)};
+    /*const handleSubmit = (e) => {
         e.preventDefault();
         axios.get('http://localhost:4000/formResponse', {
             params: {
@@ -56,8 +161,8 @@ function TeaGenerator(){
                 caffeine: caffeine
             }
         })
-        .then(res => {
-            res.send()
+        .then(data => {
+            console.log(data)
           })
     }
 
@@ -70,56 +175,56 @@ function TeaGenerator(){
                         <h3 className="teaQuestion">What type of tea do you want?</h3>
                         <div className="teaType">
                             <div>
-                                <input type="radio" name="type" value='Green' onChange={handleTypeChange} /> Green
+                                <input type="radio" name="type" value='Green' /> Green
                             </div>
                             <div>
-                                <input type="radio" name="type" value='Black' onChange={handleTypeChange}/> Black
+                                <input type="radio" name="type" value='Black' /> Black
                             </div>
                             <div>
-                                <input type="radio"name="type" value='White' onChange={handleTypeChange} /> White
+                                <input type="radio"name="type" value='White' /> White
                             </div>
                             <div>
-                                <input type="radio" name="type" value='Oolong' onChange={handleTypeChange} /> Oolong
+                                <input type="radio" name="type" value='Oolong' /> Oolong
                             </div>
                             <div>
-                                <input type="radio" name="type" value='Puerh' onChange={handleTypeChange} /> Pu'erh
+                                <input type="radio" name="type" value='Puerh' /> Pu'erh
                             </div>
                             <div>
-                                <input type="radio" name="type" value='Herbal' onChange={handleTypeChange} /> Herbal
+                                <input type="radio" name="type" value='Herbal' /> Herbal
                             </div>
                             <div>
-                                <input type="radio" name="type" value='Roobius' onChange={handleTypeChange} /> Roobius
+                                <input type="radio" name="type" value='Roobius' /> Roobius
                             </div>
                         </div>
 
                         <h3 className="teaQuestion">What flavors are you looking for?</h3>
                         <div className="teaType">
                             <div>
-                                <input type="radio" name="flavor" value='vegetal' onChange={handleFlavorChange}/> Vegetal
+                                <input type="radio" name="flavor" value='vegetal' /> Vegetal
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='savory' onChange={handleFlavorChange}/> Savory
+                                <input type="radio" name="flavor" value='savory' /> Savory
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='nutty' onChange={handleFlavorChange}/> Nutty/Toasty
+                                <input type="radio" name="flavor" value='nutty' /> Nutty/Toasty
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='floral' onChange={handleFlavorChange}/> Floral
+                                <input type="radio" name="flavor" value='floral' /> Floral
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='earthy' onChange={handleFlavorChange}/> Earthy
+                                <input type="radio" name="flavor" value='earthy' /> Earthy
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='fruity' onChange={handleFlavorChange}/> Fruity
+                                <input type="radio" name="flavor" value='fruity' /> Fruity
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='sweet' onChange={handleFlavorChange}/> Sweet
+                                <input type="radio" name="flavor" value='sweet' /> Sweet
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='mineral' onChange={handleFlavorChange}/> Mineral
+                                <input type="radio" name="flavor" value='mineral' /> Mineral
                             </div>
                             <div>
-                                <input type="radio" name="flavor" value='spicy' onChange={handleFlavorChange}/> Spicy
+                                <input type="radio" name="flavor" value='spicy' /> Spicy
                             </div>
                         </div>
 
@@ -127,50 +232,50 @@ function TeaGenerator(){
                         <h3 className="teaQuestion">Pick a Region:</h3>
                         <div className="teaType">
                             <div>
-                                <input type="radio" name="region" value="China" onChange={handleRegionChange}/> China
+                                <input type="radio" name="region" value="China" /> China
                             </div>
                             <div>
-                                <input type="radio" name="region" value="India" onChange={handleRegionChange}/> India
+                                <input type="radio" name="region" value="India" /> India
                             </div>
                             <div>
-                                <input type="radio" name="region" value="Japan" onChange={handleRegionChange} /> Japan
+                                <input type="radio" name="region" value="Japan" /> Japan
                             </div>
                             <div>
-                                <input type="radio" name="region" value="Sri Lanka" onChange={handleRegionChange}/> Sri Lanka
+                                <input type="radio" name="region" value="Sri Lanka" /> Sri Lanka
                             </div>
                             <div>
-                                <input type="radio" name="region" value="Africa" onChange={handleRegionChange}/> Africa
+                                <input type="radio" name="region" value="Africa" /> Africa
                             </div>
                             <div>
-                                <input type="radio" name="region" value="All" onChange={handleRegionChange} /> Include all regions
+                                <input type="radio" name="region" value="All" /> Include all regions
                             </div>
                         </div>
 
                         <h3 className="teaQuestion">Pick a caffeine level:</h3>
                         <div className="teaType">
                             <div>
-                                <input type="radio" name="caffeine" value='High' onChange={handleCaffeineChange} /> High
+                                <input type="radio" name="caffeine" value='High'/> High
                             </div>
                             <div>
-                                <input type="radio" name="caffeine" value='Medium' onChange={handleCaffeineChange}/> Medium
+                                <input type="radio" name="caffeine" value='Medium'/> Medium
                             </div>
                             <div>
-                                <input type="radio" name="caffeine" value='Low' onChange={handleCaffeineChange}/> Low
+                                <input type="radio" name="caffeine" value='Low'/> Low
                             </div>
                             <div>
-                                <input type="radio" name="caffeine" value='None' onChange={handleCaffeineChange}/> None
+                                <input type="radio" name="caffeine" value='None'/> None
                             </div>
                             <div>
-                                <input type="radio" name="caffeine" value='All' onChange={handleCaffeineChange}/> All levels
+                                <input type="radio" name="caffeine" value='All'/> All levels
                             </div>
                         </div>
 
-                        <button onClick={handleSubmit} className="teaQuizButton">Submit</button>
+                        <button className="teaQuizButton">Submit</button>
                     </form>
                 </div>
             </div>
         );
-}
+}*/
 
 
 

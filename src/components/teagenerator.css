@@ -1,9 +1,9 @@
 .teagenerator{
     font-family: 'Rouge Script', sans-serif;
-    font-size: 118px;
+    font-size:78px;
     color: rgb(60, 11, 69);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .teaForm{
@@ -16,6 +16,8 @@
     width: fit-content;
     padding: 20px;
     border-radius: 10px;
+    margin-top: 60px;
+    padding: 50px;
 }
 
 .teaType{
@@ -31,12 +33,12 @@
     font-family: 'Source Sans Pro';
 }
 
+
 .teaQuestion{
     margin-bottom: 20px;
     font-size: 38px;
     font-family: 'Source Sans Pro';
     text-align: left;
-    margin-left: 60px;
     font-weight: bold;
 }
 
@@ -45,5 +47,26 @@
     margin: 0 auto;
     padding: 5px 10px;
     width: 200px;
-    margin-top: 30px;
+    margin-top: 50px;
+}
+
+label{
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.answer{
+    margin-right: 5px;
+}
+
+#type,
+#flavor,
+#caffeine,
+#region {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.questions{
+    margin-bottom: 20px;
 }
