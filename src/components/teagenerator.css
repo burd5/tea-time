@@ -1,6 +1,7 @@
 .teagenerator{
     font-family: 'Rouge Script', sans-serif;
-    font-size:78px;
+    font-size:98px;
+    font-weight: 500;
     color: rgb(60, 11, 69);
     text-align: center;
     margin-bottom: 10px;
@@ -17,6 +18,7 @@
     padding: 20px;
     border-radius: 10px;
     margin-top: 60px;
+    margin-bottom: 60px;
     padding: 50px;
 }
 
@@ -69,4 +71,19 @@ label{
 
 .questions{
     margin-bottom: 20px;
+}
+
+.teaResults{
+    margin-top: 50px;
+    border-radius: 10px;
+    color: black;
+    display: none;
+}
+
+.teaItem{
+    padding: 20px;
+}
+
+.noResults{
+    margin: 0 auto;
 }

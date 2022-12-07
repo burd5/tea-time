@@ -9,6 +9,9 @@ let TeaSchema = new Schema({
   },
   region: {
     type: String
+  },
+  flavor: {
+    type: String
   }
 });
 

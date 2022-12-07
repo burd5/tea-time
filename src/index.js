@@ -26,6 +26,5 @@ root.render(
       <Route path="/collection" element={<Collection />} />
       <Route path="/teagenerator" element={<TeaGenerator />} />
     </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
 );

@@ -2,7 +2,9 @@ let express = require('express');
 let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
-const Teas = require('../backend/Models/Teas')
+const Teas = require('../backend/Models/Teas');
+const { validateYupSchema } = require('formik');
+
 
 // Express Route
 
@@ -21,43 +23,42 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cors());
+app.use(cors())
 
-
-
-app.get('/teas', async (req,res) => {
+app.get('/collection', async (req, res) => {
   try {
     let teas = await Teas.find({})
     res.send(teas)
   } catch (error) {
     console.log(error)
-  }
-});
+  }});
 
-app.get('/formResponse', async (req,res) => {
+
+app.get('/teas', async (req,res) => {
   try {
-    let type = req.query.type
-    let region = req.query.region
-    let flavor = req.query.flavor
-    let caffeine = req.query.caffeine
 
-    let types = await Teas.find({type: type})
-    let regions = await Teas.find({region: region})
-    let flavors = await Teas.find({flavor: flavor})
-    let caffeines = await Teas.find({caffeine: caffeine})
+    let teaType = req.query.type
+    let teaFlavor = req.query.flavor
+    let teaRegion = req.query.region
+    let teaCaffeine = req.query.caffeine
+    
+    let type = await Teas.find({type: teaType})
+    let regions = await Teas.find({region: teaRegion})
+    let flavors = await Teas.find({flavor: teaFlavor})
+    let caffeines = await Teas.find({caffeine: teaCaffeine})
+    
 
     let search = await Teas.aggregate( [
-      { $match: { $and: [ { type: type }, { region: region }, { flavor: flavor }, { caffeine: caffeine } ] } },
+      { $match: { $and: [ { type: teaType }, { region: teaRegion }, { flavor: teaFlavor }, { caffeine: teaCaffeine} ] } },
     ] )
 
-   
-    console.log(search, types)
-  
+    res.send(search)
+
+
   } catch (error) {
     console.log(error)
   }
 });
-
 
 // PORT
 const port = process.env.PORT || 4000;

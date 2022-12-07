@@ -1,17 +1,13 @@
-let mongoose = require('mongoose'),
+  let mongoose = require('mongoose'),
   express = require('express'),
   router = express.Router();
-// Student Model
+  let Teas = require('../Models/Teas')
 
-// READ Students
-router.route('/collection').get((req, res) => {
-  TeaSchema.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      console.log(res.json(data))
-    }
-  })
-})
+router.route('/teas').get((req, res) => {
+  try {
+    let teas = Teas.find({})
+    res.send(teas)
+  } catch (error) {
+    console.log(error)
+  }});
 
-module.exports = router;
