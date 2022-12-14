@@ -1,12 +1,13 @@
 import React from 'react'
 import './findtea.css'
 import {Link} from "react-router-dom"
+import Head from '../components/Head'
 
 function Findtea() {
   return (
     <div className="findTea">
-        <h1>Teas</h1>
-        <div className="flex justify-center gap-20">
+      <Head />
+        <div className="flex justify-center gap-20 mt-24">
             
             <div className="collection w-1/2 bg-white">
             <Link to={'/collection'}>

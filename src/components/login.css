@@ -32,3 +32,8 @@
 .homeSpan{
     cursor:pointer;
 }
+
+.loginErrors{
+    margin-bottom: 20px;
+    color: red;
+}

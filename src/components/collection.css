@@ -40,6 +40,7 @@
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
+    background-color: #fff;
 }
 
 .teaButton:hover{
@@ -47,7 +48,7 @@
 }
 
 .filterCat{
-    margin-top: -80px;
+    font-size: 24px;
 }
 .filterCat label{
     font-size: 40px;
@@ -56,6 +57,7 @@
 
 .filterCat select{
     margin-right: 25px;
+    font-family: 'Source Sans Pro';
 }
 
 .teaSearchButton{

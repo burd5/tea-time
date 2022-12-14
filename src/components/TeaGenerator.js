@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import './teagenerator.css'
 import axios from 'axios'
 import * as Yup from "yup";
+import Head from './Head'
 
 
 const AnswersSchema = Yup.object().shape({
@@ -57,23 +58,23 @@ function TeaGenerator(){
               Green
             </label>
             <label>
-              <Field className="answer" type="radio" name="type" value="white" />
+              <Field className="answer" type="radio" name="type" value="White" />
               White
             </label>
             <label>
-              <Field className="answer" type="radio" name="type" value="oolong" />
+              <Field className="answer" type="radio" name="type" value="Oolong" />
               Oolong
             </label>
             <label>
-              <Field className="answer" type="radio" name="type" value="puerh" />
+              <Field className="answer" type="radio" name="type" value="Puerh" />
               Puerh
             </label>
             <label>
-              <Field className="answer" type="radio" name="type" value="herbal" />
+              <Field className="answer" type="radio" name="type" value="Herbal" />
               Herbal
             </label>
             <label>
-              <Field className="answer" type="radio" name="type" value="roobius" />
+              <Field className="answer" type="radio" name="type" value="Roobius" />
               Roobius
             </label>
           </div>
@@ -125,19 +126,23 @@ function TeaGenerator(){
               China
             </label>
             <label>
-              <Field className="answer" type="radio" name="region" value="india" />
+              <Field className="answer" type="radio" name="region" value="India" />
               India
             </label>
             <label>
-              <Field className="answer" type="radio" name="region" value="japan" />
+              <Field className="answer" type="radio" name="region" value="Japan" />
               Japan
+            </label>
+            <label>
+              <Field className="answer" type="radio" name="region" value="Taiwan" />
+              Taiwan
             </label>
             <label>
               <Field className="answer" type="radio" name="region" value="Sri Lanka" />
               Sri Lanka
             </label>
             <label>
-              <Field className="answer" type="radio" name="region" value="africa" />
+              <Field className="answer" type="radio" name="region" value="Africa" />
               Africa
             </label>
           </div>
@@ -149,15 +154,15 @@ function TeaGenerator(){
               High
             </label>
             <label>
-              <Field className="answer" type="radio" name="caffeine" value="medium" />
+              <Field className="answer" type="radio" name="caffeine" value="Medium" />
               Medium
             </label>
             <label>
-              <Field className="answer" type="radio" name="caffeine" value="low" />
+              <Field className="answer" type="radio" name="caffeine" value="Low" />
               Low
             </label>
             <label>
-              <Field className="answer" type="radio" name="caffeine" value="none" />
+              <Field className="answer" type="radio" name="caffeine" value="None" />
               None
             </label>
           </div>
@@ -171,13 +176,14 @@ function TeaGenerator(){
     {teas.length > 0 ? teas.map(c => <div className="teaItem" key={c._id}>
           <ul>
             <img className="teaListImg" src={c.img} alt="" />
-              <li><strong>Name:</strong> {c.name}</li>
+              <li className="name"><strong>{c.name} Tea</strong></li>
               <li><strong>Type:</strong> {c.type}</li>
               <li className="profile"><strong>Profile:</strong> {c.profile}</li>
-              <li><strong>Region:</strong> {c.region}</li>
+              <li className="desc"><strong>Description:</strong> {c.desc}</li>
+              <li><strong>Origin:</strong> {c.region}</li>
               <li><i className="teaButton fas fa-mug-hot"></i></li>
           </ul>
-            </div> ) : <div>No results</div>}
+            </div> ) : <div className="noResults">Sorry, there were no results for your search.</div>}
       </div> 
   </div> 
 )};

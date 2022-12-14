@@ -1,37 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
-import {Link} from "react-router-dom"
+import axios from 'axios'
+import {Link, useNavigate} from "react-router-dom"
 
 function Signup() {
+
+    const navigate = useNavigate()
+    const url = `http://localhost:4000/signup`;
+    const [username, setRegisterUsername] = useState('')
+    const [password, setRegisterPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [errors, setError] = useState([])
+  
+    const signup = async (req, res) => {
+      await axios.post(url, {
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+      })
+    .then(response => {
+        if(response.data === 'User Created') {
+            navigate('/profile')
+        } else {
+        setError(response.data)
+        console.log(response.data);
+        }
+    })}
+
   return (
     <div className="signup">
         <h1 className="signupHeader">Sign Up</h1>
         <div className="signupContainer bg-white">
-            <form class="rounded px-8 pt-6 pb-8 mb-4" action="">
-            <div class="mb-4">
-                <label class="block text-lg font-bold mb-2" for="username">
+            <form className="rounded px-8 pt-6 pb-8 mb-4" action="">
+            <div className="mb-4">
+                <label className="block text-lg font-bold mb-2" htmlFor="username">
                     Username
                 </label>
-                <input class="loginInputs rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-black" id="username" type="text" placeholder="Username" />
+                <input onChange={e => setRegisterUsername(e.currentTarget.value)}className="loginInputs rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-black" id="username" type="text" placeholder="Username" />
             </div>
-            <div class="mb-6">
-                <label class="block text-lg font-bold mb-2" for="password">
+            <div className="mb-6">
+                <label className="block text-lg font-bold mb-2" htmlFor="password">
                     Password
                 </label>
-                <input class="loginInputs rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
+                <input onChange={e => setRegisterPassword(e.currentTarget.value)} className="loginInputs rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
             </div>
-            <div class="mb-6">
-                <label class="block text-lg font-bold mb-2" for="confirmPassword">
+            <div className="mb-6">
+                <label className="block text-lg font-bold mb-2" htmlFor="confirmPassword">
                     Confirm Password
                 </label>
-                <input class="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
+                <input onChange={e => setConfirmPassword(e.currentTarget.value)} className="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="confirmPassword" type="password" placeholder="Password" />
             </div>
-            <div class="flex-col items-center">
-                <button class="loginButton" type="button">
+            <div className="loginErrors">{errors.map(el => <div key={el._id}>{el}</div>)}</div>
+            <div className="flex-col items-center">
+                <button onClick={ signup } className="loginButton" type="button">
                     Sign Up
                 </button>
                 <Link to={'/'}>
-                <span class="homeSpan inline-block font-bold text-xl text-blue-500 hover:text-blue-800">
+                <span className="homeSpan inline-block font-bold text-xl text-blue-500 hover:text-blue-800">
                     Home
                 </span>
                 </Link>

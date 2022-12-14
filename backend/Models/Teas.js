@@ -12,7 +12,14 @@ let TeaSchema = new Schema({
   },
   flavor: {
     type: String
-  }
+  },
+  caffeine: {
+    type: String
+  }, 
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+},
 });
 
 const Teas = mongoose.model('Tea', TeaSchema)

@@ -6,6 +6,7 @@ import Signup from './components/Signup'
 import Findtea from './components/Findtea'
 import Collection from './components/Collection'
 import TeaGenerator from './components/TeaGenerator'
+import Profile from './components/Profile'
 
 
 import {
@@ -25,6 +26,7 @@ root.render(
       <Route path="/findtea" element={<Findtea />} />
       <Route path="/collection" element={<Collection />} />
       <Route path="/teagenerator" element={<TeaGenerator />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   </BrowserRouter>
 );

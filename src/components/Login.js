@@ -1,40 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './login.css'
-import {Link} from "react-router-dom"
+import axios from 'axios'
+import {Link, useNavigate} from "react-router-dom"
 
 
 function Login() {
+
+    const navigate = useNavigate();
+    const url = `http://localhost:4000/login`;
+    const [username, setLoginUsername] = useState('')
+    const [password, setLoginPassword] = useState('')
+    const [errors, setError] = useState('')
+  
+    const login = async (req, res) => {
+      await axios.post(url, {
+          username: username,
+          password: password,
+      })
+    .then(response => {
+        if(response.data === 'Authenticated') {
+            navigate('/profile')
+        } else {
+        setError(response.data)
+        console.log(response.data);
+        }
+    })}
+
+
+
   return (
     <div className="login">
         <h1 className="loginHeader">Login</h1>
         <div className="loginContainer bg-white">
-            <form class="rounded px-8 pt-6 pb-8 mb-4" action="/login" method="GET">
-            <div class="mb-4">
-                <label class="block text-lg font-bold mb-2" for="username">
+            <form className="rounded px-8 pt-6 pb-8 mb-4" action="" method="">
+            <div className="mb-4">
+                <label className="block text-lg font-bold mb-2" htmlFor="username">
                     Username
                 </label>
-                <input class="loginInputs rounded w-full py-2 px-3 text-black-700 leading-tight focus:outline-black" id="username" type="text" placeholder="Username" />
+                <input onChange={e => setLoginUsername(e.target.value)}className="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="username" type="text" placeholder="Username" />
             </div>
-            <div class="mb-6">
-                <label class="block text-lg font-bold mb-2" for="password">
+            <div className="mb-6">
+                <label className="block text-lg font-bold mb-2" htmlFor="password">
                     Password
                 </label>
-                <input class="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
+                <input onChange={e => setLoginPassword(e.target.value)}className="loginInputs rounded w-full py-2 px-3 text-black-700 mb-3 leading-tight focus:outline-black" id="password" type="password" placeholder="Password" />
             </div>
-            <div class="flex-col items-center">
-                <button class="loginButton" type="Submit">
+            <div className="loginErrors">{errors}</div>
+            <div className="flex-col items-center">
+                <button onClick={login} className="loginButton" type="button">
                     Sign In
                 </button>
                 <Link to={'/'}>
-                <span class="homeSpan inline-block font-bold text-xl text-blue-500 hover:text-blue-800">
+                <span className="homeSpan inline-block font-bold text-xl text-blue-500 hover:text-blue-800">
                     Home
                 </span>
                 </Link>
             </div>
         </form>
         </div>
-    </div>
+    </div> 
   )
 }
+
+
 
 export default Login

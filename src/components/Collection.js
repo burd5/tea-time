@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
+import { Formik, Form, Field } from 'formik'
 import './collection.css'
 import axios from "axios";
+import Head from './Head'
 
 function Collection() {
   
@@ -12,32 +14,55 @@ function Collection() {
     })
   }, [])
 
+  const filterCollection = async (values, res) => {
+    await axios.get(`http://localhost:4000/filter`, {
+      params: {
+        type: values.type,
+        flavor: values.flavor,
+        region: values.region,
+        caffeine: values.caffeine
+      }
+    })
+  .then(res => {
+    setTeas(res.data)
+  })}
+
   return (
   
   <div className="collections">
+    <Head />
     <h1 className="collectionsTitle">Collection</h1>
-      <form className="filterCat">
+    <Formik
+      initialValues={{
+        type: "",
+        flavor: "",
+        region: "",
+        caffeine: ""
+      }}
+      onSubmit={filterCollection}>
+      {({ values }) => (
+      <Form className="filterCat">
         <label htmlFor="type">Type</label>
-        <select name="type" id="type">
+        <Field as="select" name="type">
           <option value=""></option>
-          <option value="black">Black</option>
-          <option value="black">Green</option>
-          <option value="black">White</option>
-          <option value="black">Herbal</option>
-          <option value="black">Roobius</option>
-          <option value="black">Oolong</option>
-        </select>
+          <option value="Black">Black</option>
+          <option value="Green">Green</option>
+          <option value="White">White</option>
+          <option value="Herbal">Herbal</option>
+          <option value="Roobius">Roobius</option>
+          <option value="Oolong">Oolong</option>
+        </Field>
         <label htmlFor="region">Region</label>
-        <select name="region" id="region">
+        <Field as="select" name="region">
           <option value=""></option>
-          <option value="china">China</option>
-          <option value="japan">Japan</option>
-          <option value="india">India</option>
-          <option value="africa">Africa</option>
-          <option value="srilanka">Sri Lanka</option>
-        </select>
+          <option value="China">China</option>
+          <option value="Japan">Japan</option>
+          <option value="India">India</option>
+          <option value="Africa">Africa</option>
+          <option value="Sri Lanka">Sri Lanka</option>
+        </Field>
         <label htmlFor="flavor">Flavor</label>
-        <select name="flavor" id="flavor">
+        <Field as="select" name="flavor">
           <option value=""></option>
           <option value="vegetal">Vegetal</option>
           <option value="savory">Savory</option>
@@ -48,17 +73,19 @@ function Collection() {
           <option value="fruity">Fruity</option>
           <option value="mineral">Mineral</option>
           <option value="spicy">Spicy</option>
-        </select>
+        </Field>
         <label htmlFor="caffeine">Caffeine</label>
-        <select name="caffeine" id="caffeine">
+        <Field as="select" name="caffeine">
           <option value=""></option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
-          <option value="none">None</option>
-        </select>
-        <button className="teaSearchButton" type="submit">Search</button>
-      </form>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+          <option value="None">None</option>
+        </Field>
+        <button onSubmit={filterCollection} className="teaSearchButton" type="submit">Search</button>
+      </Form>
+      )}
+      </Formik>
     <div>
       <div className="teaList">
         {teas.map(c => <div className="teaDesc" key={c._id}>
@@ -66,8 +93,6 @@ function Collection() {
             <img className="teaListImg" src={c.img} alt="" />
               <li><strong>Name:</strong> {c.name}</li>
               <li><strong>Type:</strong> {c.type}</li>
-              <li className="profile"><strong>Profile:</strong> {c.profile}</li>
-              <li><strong>Region:</strong> {c.region}</li>
               <li><i className="teaButton fas fa-mug-hot"></i></li>
           </ul>
             </div>)}
