@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './login.css'
 import axios from 'axios'
 import {Link, useNavigate} from "react-router-dom"
+import {useUserStore} from './useStore'
 
 function Signup() {
 
@@ -11,6 +12,7 @@ function Signup() {
     const [password, setRegisterPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [errors, setError] = useState([])
+    const setUser = useUserStore(state => state.setUser)
   
     const signup = async (req, res) => {
       await axios.post(url, {
@@ -19,7 +21,8 @@ function Signup() {
           confirmPassword: confirmPassword,
       })
     .then(response => {
-        if(response.data === 'User Created') {
+        if(response.data) {
+            setUser(response.data)
             navigate('/profile')
         } else {
         setError(response.data)

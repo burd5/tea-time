@@ -27,12 +27,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 app.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
   resave: false,
+  saveUninitialized: false,
   cookie:{ secure :false}
 }))
 
@@ -65,16 +66,18 @@ app.use(cors())
 
 // Login/Register Routes
 
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
+app.post("/login/password", (req, res, next) => {
+  passport.authenticate('local', { failureRedirect: '/login'}, (err, user, info) => {
+    if (err) {
+      return next(err)
+    };
     console.log(user)
-    if (!user) res.send("No User Exists");
+    if (!user) res.send("Error");
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Authenticated");
-        console.log(req.user);
+        console.log(user)
+        res.send(user);
       });
     }
   })(req, res, next);
@@ -107,13 +110,21 @@ app.post('/signup', async (req,res) =>{
         password: hashedPassword,
       });
       await newUser.save();
-      res.send('User Created')
+      res.send(req.body.username)
     }
   })};
 });
 
-app.get('/user', (req,res) => {
-  res.send(req.user)
+app.get('/logout', async (req,res, next) => {
+  req.session.destroy((err) => {
+    if (err) { return next(err); }
+    res.send('Logged out');
+  });
+});
+
+app.get('/user', async (req,res) => {
+  let currentUser = await User.findOne({ user: req.user })
+  res.send(currentUser.username)
 })
 
 ///////////////////////////////

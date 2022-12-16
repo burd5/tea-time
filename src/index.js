@@ -16,8 +16,10 @@ import {
 } from "react-router-dom";
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <div>
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
@@ -29,4 +31,5 @@ root.render(
       <Route path="/profile" element={<Profile />} />
     </Routes>
   </BrowserRouter>
+  </div>
 );

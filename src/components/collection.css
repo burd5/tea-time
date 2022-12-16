@@ -67,3 +67,17 @@
     display: inline;
     background-color: white;
 }
+
+.modal{
+    height: 750px;
+    width: 750px;
+    background: #fff;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 20%;
+    text-align: center; 
+    border-radius: 25px;
+}

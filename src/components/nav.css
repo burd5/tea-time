@@ -1,11 +1,29 @@
 .nav{
     font-family: 'Source Sans Pro';
-    font-size: 34px;
+    color: rgb(60, 11, 69);
+}
+
+.navItems{
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .logo{
-    font-family: 'Rouge Script';
+    font-family: 'Source Sans Pro';
     font-weight: bold;
-    font-size: 50px;
+    font-size: 40px;
+}
+
+.inOut{
+    color: #fff;
+    background-color: rgb(60, 11, 69);
+    font-weight: bold;
+    padding: 2px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.mug{
+    font-size: 45px;
 }
 

@@ -2,9 +2,20 @@ import React, {useEffect, useState} from "react";
 import { Formik, Form, Field } from 'formik'
 import './collection.css'
 import axios from "axios";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import Head from './Head'
 
 function Collection() {
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  }
+  const handleClose = () => setOpen(false);
+
   
   const [teas, setTeas] = useState([]);
 
@@ -93,9 +104,23 @@ function Collection() {
             <img className="teaListImg" src={c.img} alt="" />
               <li><strong>Name:</strong> {c.name}</li>
               <li><strong>Type:</strong> {c.type}</li>
-              <li><i className="teaButton fas fa-mug-hot"></i></li>
+              <li><i onClick={handleOpen} className="teaButton fas fa-mug-hot"></i></li>
           </ul>
-            </div>)}
+          </div>)}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+        <Box className="modal">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Tea Name
+          </Typography>
+          <Typography id="modal-modal-description">
+            Tea Description
+          </Typography>
+        </Box>
+      </Modal>
         </div>
     </div>
   </div>

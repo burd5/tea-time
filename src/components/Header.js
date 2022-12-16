@@ -1,8 +1,20 @@
 import React from 'react'
 import './header.css'
+import axios from 'axios'
 import {Link} from "react-router-dom"
+import {useUserStore} from './useStore'
 
 function Header() {
+    const user = useUserStore((state) => state.user)
+    const setUser = useUserStore(state => state.setUser)
+
+    const logout = async (req, res) => {
+        await axios.get(`http://localhost:4000/logout`).then(res => {
+          if(res.data === "Logged out"){
+            setUser('')
+        }})
+      }
+
   return (
     <div className="flex justify-center">
         <div className="mainLeft">
@@ -15,11 +27,16 @@ function Header() {
                         Find a Tea
                     </button>
                 </Link>
+                { user === '' ? 
                 <Link to={'/login'}>
                     <button>
                         Log In
                     </button>
-                </Link>
+                </Link> : 
+                    <button onClick={ logout }>
+                        Log Out
+                    </button>
+                 }
                 <Link to={'/signup'}>
                     <button>
                         Sign Up
