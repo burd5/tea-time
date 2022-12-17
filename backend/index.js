@@ -140,6 +140,15 @@ app.get('/collection', async (req, res) => {
     console.log(error)
   }});
 
+  app.get('/userCollection', async (req, res) => {
+    try {
+      let user = req.query.user
+      let teas = await Teas.find({user: user})
+      res.send(teas)
+    } catch (error) {
+      console.log(error)
+    }});
+
 app.get('/filter', async (req, res) => {
   try {
     let teaType = req.query.type
@@ -179,6 +188,19 @@ app.get('/teas', async (req,res) => {
     console.log(error)
   }
 });
+
+app.post('/addTea', async(req,res) => {
+    try {
+      let user = req.query.user
+      let teaID = req.query.id
+      console.log(teaID, user)
+      await Teas.findOneAndUpdate({_id: teaID}, 
+        {$addToSet: {user: user}})
+        console.log(modalTea)
+    } catch (error) {
+      
+    }
+})
 
 // PORT
 const port = process.env.PORT || 4000;

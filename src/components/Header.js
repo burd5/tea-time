@@ -17,17 +17,17 @@ function Header() {
 
   return (
     <div className="flex justify-center">
-        <div className="mainLeft">
+        <div className="">
             <h1 className="header text-center mt-10">Tea Time</h1>
             <img className="teaImg" src="https://i.pinimg.com/originals/a5/8b/bd/a58bbd693cb5981b1717c5b184c4f898.gif" alt="" />
         </div>
-        <div className="mainRight self-center ml-20 mt-40">
+        <div className="self-center ml-20 mt-40">
                 <Link to={'/findtea'}>
                     <button>
                         Find a Tea
                     </button>
                 </Link>
-                { user === '' ? 
+                { user === '' || user === 'Tea Time'? 
                 <Link to={'/login'}>
                     <button>
                         Log In

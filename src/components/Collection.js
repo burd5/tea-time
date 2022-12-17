@@ -3,25 +3,41 @@ import { Formik, Form, Field } from 'formik'
 import './collection.css'
 import axios from "axios";
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Head from './Head'
+import { useUserStore } from './useStore'
 
 function Collection() {
 
+  const [teas, setTeas] = useState([]);
+  const [modalTea, setModalTea] = useState('')
+  const user = useUserStore((state) => state.user)
+  const setUser = useUserStore(state => state.setUser)
+  const userID = useUserStore((state) => state.userID)
+
   const [open, setOpen] = useState(false);
-  const handleOpen = () => {
+  const handleOpen = tea => () => {
     setOpen(true);
+    setModalTea(tea)
   }
   const handleClose = () => setOpen(false);
 
-  
-  const [teas, setTeas] = useState([]);
+  const addToCollection = async (res) => {
+    await axios.post(`http://localhost:4000/addTea`, {userID}, {
+      params: {
+        id: modalTea._id,
+        user: userID
+      }
+      })
+    .then(res => {
+       console.log(res.data)
+    })
+  }
 
   useEffect(() => {
     axios.get(`http://localhost:4000/collection`).then(res => {
       setTeas(res.data);
+      setUser(user)
     })
   }, [])
 
@@ -104,7 +120,7 @@ function Collection() {
             <img className="teaListImg" src={c.img} alt="" />
               <li><strong>Name:</strong> {c.name}</li>
               <li><strong>Type:</strong> {c.type}</li>
-              <li><i onClick={handleOpen} className="teaButton fas fa-mug-hot"></i></li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
           </ul>
           </div>)}
       <Modal
@@ -112,13 +128,17 @@ function Collection() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
-        <Box className="modal">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Tea Name
-          </Typography>
-          <Typography id="modal-modal-description">
-            Tea Description
-          </Typography>
+        <Box>
+          <div className="modal">
+            <h1 className="text-3xl pt-10 font-bold mb-10">{modalTea.name}</h1>
+            <img className="modalteaListImg" src={modalTea.img} alt="tea" />
+            <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
+            <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
+            <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
+            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalTea.flavor}</span>
+            <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
+            <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>
+          </div>
         </Box>
       </Modal>
         </div>

@@ -13,6 +13,7 @@ function Login() {
     const [password, setLoginPassword] = useState('')
     const [errors, setError] = useState('')
     const setUser = useUserStore(state => state.setUser)
+    const setUserID = useUserStore(state => state.setUserID)
   
     const login = async (req, res) => {
       await axios.post(url, {
@@ -25,6 +26,7 @@ function Login() {
         }
         else if(response.data) {
             setUser(response.data.username)
+            setUserID(response.data._id)
             navigate('/profile')
         } else {
         setError(response.data)

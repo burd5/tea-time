@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
     },
   password: 
     {
-    type: String,
+      type: String,
     },
   img:
     {
@@ -15,6 +15,11 @@ const UserSchema = new mongoose.Schema({
       require: true,
       default: 'https://ctorthopaedic.com/wp-content/uploads/2017/01/profile-silhouette.jpg',
     },
+  teas:
+    [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Teas',
+    }]
 })
 
 module.exports = mongoose.model('User', UserSchema)

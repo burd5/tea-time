@@ -28,6 +28,13 @@
     border: 2px solid rgb(60, 11, 69);
 }
 
+.modalteaListImg{
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
 .profile{
     width: 250px;
 }
@@ -69,15 +76,29 @@
 }
 
 .modal{
-    height: 750px;
-    width: 750px;
+    height: 75%;
+    width: 50%;
     background: #fff;
-    position: absolute;
     margin-left: auto;
     margin-right: auto;
+    position: absolute;
     left: 0;
     right: 0;
-    top: 20%;
+    top: 10%;
     text-align: center; 
-    border-radius: 25px;
+    border: 3px solid rgb(60, 11, 69);
+    font-size: 24px;
+    padding-bottom: 40px;
+    overflow-y: scroll;
+}
+
+.modalTeaButton{
+    width: fit-content;
+    font-family: 'Source Sans Pro';
+    font-size: 24px;
+    margin: 0 auto;
+    border: 3px solid rgb(60, 11, 69);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
 }

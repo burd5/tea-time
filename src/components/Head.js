@@ -13,7 +13,7 @@ export default function Head() {
   const logout = async (req, res) => {
     await axios.get(`http://localhost:4000/logout`).then(res => {
       if(res.data === "Logged out"){
-        setUser('Tea Time')
+        setUser('')
         navigate('/login')
     }})
   }
@@ -38,7 +38,7 @@ export default function Head() {
                     <Link to={'/findtea'}>
                     <li>Teas</li>
                     </Link>
-                    { user === '' || user === 'Tea Time' ? <Link to={'/login'}><li className="inOut">Sign In</li></Link > : <li onClick={logout} className="inOut">Sign Out</li>}
+                    { user === '' ? <Link to={'/login'}><li className="inOut">Sign In</li></Link > : <li onClick={logout} className="inOut">Sign Out</li>}
                 </div>
             </ul>
         </nav>
