@@ -6,14 +6,21 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Head from './Head'
 import { useUserStore } from './useStore'
+import { Link, useNavigate } from "react-router-dom";
 
 function Collection() {
 
   const [teas, setTeas] = useState([]);
   const [modalTea, setModalTea] = useState('')
+  const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
-  const setUser = useUserStore(state => state.setUser)
-  const userID = useUserStore((state) => state.userID)
+  const userID = localStorage.getItem('userID')
+
+  useEffect(() => {
+    axios.get(`http://localhost:4000/collection`).then(res => {
+      setTeas(res.data);
+    })
+  }, [])
 
   const [open, setOpen] = useState(false);
   const handleOpen = tea => () => {
@@ -23,23 +30,16 @@ function Collection() {
   const handleClose = () => setOpen(false);
 
   const addToCollection = async (res) => {
-    await axios.post(`http://localhost:4000/addTea`, {userID}, {
+    await axios.post(`http://localhost:4000/addTea`, {modalTea}, {
       params: {
         id: modalTea._id,
         user: userID
       }
       })
     .then(res => {
-       console.log(res.data)
+      if(res) navigate('/profile')
     })
   }
-
-  useEffect(() => {
-    axios.get(`http://localhost:4000/collection`).then(res => {
-      setTeas(res.data);
-      setUser(user)
-    })
-  }, [])
 
   const filterCollection = async (values, res) => {
     await axios.get(`http://localhost:4000/filter`, {
@@ -137,7 +137,15 @@ function Collection() {
             <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
             <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalTea.flavor}</span>
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
-            <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>
+            <div>
+            {user === '' ? <div>
+              <button className="disabledTeaButton" disabled={true}>Add to Collection</button>
+              <Link to={'/login'}>
+              <span className="m-auto block inOut w-fit">Sign In</span>
+              </Link>
+              </div>
+              : <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>}
+            </div>
           </div>
         </Box>
       </Modal>

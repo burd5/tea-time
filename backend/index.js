@@ -11,9 +11,10 @@ const session = require('express-session')
 let bodyParser = require('body-parser');
 const Teas = require('./Models/Teas');
 const User = require('./Models/User')
+const ObjectId = require('mongodb').ObjectId;
+
 
 const app = express();
-
 
 require('./config/passport')(passport);
 
@@ -66,7 +67,7 @@ app.use(cors())
 
 // Login/Register Routes
 
-app.post("/login/password", (req, res, next) => {
+app.post('/login', (req, res, next) => {
   passport.authenticate('local', { failureRedirect: '/login'}, (err, user, info) => {
     if (err) {
       return next(err)
@@ -132,6 +133,16 @@ app.get('/user', async (req,res) => {
 
 // Tea Routes
 
+app.get('/userCollection', async function(req, res){
+  try {
+    let userid = req.query.userID
+    console.log(userid)
+    let userTeas = await Teas.find({user: {$in: userid}})
+    res.send(userTeas)
+  } catch (error) {
+    console.log(error)
+  }});
+
 app.get('/collection', async (req, res) => {
   try {
     let teas = await Teas.find({})
@@ -140,15 +151,6 @@ app.get('/collection', async (req, res) => {
     console.log(error)
   }});
 
-  app.get('/userCollection', async (req, res) => {
-    try {
-      let user = req.query.user
-      let teas = await Teas.find({user: user})
-      res.send(teas)
-    } catch (error) {
-      console.log(error)
-    }});
-
 app.get('/filter', async (req, res) => {
   try {
     let teaType = req.query.type
@@ -156,7 +158,7 @@ app.get('/filter', async (req, res) => {
     let teaFlavor = req.query.flavor
     let teaCaffeine = req.query.caffeine
       
-    let search = await Teas.find({ $or: [{type: teaType}, {region: teaRegion}, {flavor: teaFlavor}, {caffeine: teaCaffeine}]})
+    let search = await Teas.find({ $or: [{type: teaType}, {region: teaRegion}, {flavor: {$in: teaFlavor}}, {caffeine: teaCaffeine}]})
 
     res.send(search)
   } catch (error) {
@@ -193,13 +195,26 @@ app.post('/addTea', async(req,res) => {
     try {
       let user = req.query.user
       let teaID = req.query.id
-      console.log(teaID, user)
-      await Teas.findOneAndUpdate({_id: teaID}, 
+      console.log(user, teaID)
+      let tea = await Teas.findByIdAndUpdate({_id: teaID}, 
         {$addToSet: {user: user}})
-        console.log(modalTea)
+        res.send(tea)
     } catch (error) {
-      
+      console.log(error)
     }
+})
+
+app.delete('/deleteTea', async(req,res) => {
+  try {
+    let user = req.query.user
+    let teaID = req.query.id
+    console.log(teaID)
+    let tea = await Teas.findByIdAndUpdate({_id: teaID}, 
+      {$pull: {user: user}})
+      res.send(tea)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // PORT

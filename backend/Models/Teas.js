@@ -16,10 +16,10 @@ let TeaSchema = new Schema({
   caffeine: {
     type: String
   }, 
-  user: [{
-    type: mongoose.Schema.Types.ObjectId,
+  user: {
+    type: String,
     ref: 'User',
-}],
+},
 });
 
 const Teas = mongoose.model('Tea', TeaSchema)

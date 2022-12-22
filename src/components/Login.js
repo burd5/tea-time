@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import './login.css'
 import axios from 'axios'
 import {Link, useNavigate} from "react-router-dom"
-import {useUserStore} from './useStore'
-
+import { useUserStore } from './useStore'
 
 function Login() {
 
     const navigate = useNavigate();
-    const url = `http://localhost:4000/login/password`;
+    const url = `http://localhost:4000/login`;
     const [username, setLoginUsername] = useState('')
     const [password, setLoginPassword] = useState('')
     const [errors, setError] = useState('')
@@ -27,10 +26,11 @@ function Login() {
         else if(response.data) {
             setUser(response.data.username)
             setUserID(response.data._id)
+            localStorage.setItem('user', response.data.username)
+            localStorage.setItem('userID', response.data._id)
             navigate('/profile')
         } else {
-        setError(response.data)
-        console.log(response.data);
+        setError(response.data);
         }
     })}
 

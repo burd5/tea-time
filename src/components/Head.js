@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './nav.css'
-import {Link, useNavigate} from "react-router-dom"
+import { NavLink, Link, useNavigate} from "react-router-dom"
 import axios from 'axios'
 import { useUserStore } from './useStore'
 
@@ -10,11 +10,20 @@ export default function Head() {
   const setUser = useUserStore(state => state.setUser)
   const user = useUserStore((state) => state.user)
 
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    }
+  }, [setUser]);
+
   const logout = async (req, res) => {
     await axios.get(`http://localhost:4000/logout`).then(res => {
       if(res.data === "Logged out"){
+        localStorage.clear()
         setUser('')
-        navigate('/login')
+        navigate('/')
     }})
   }
 
@@ -29,16 +38,16 @@ export default function Head() {
                 </Link>
               
                 <div className="navItems flex gap-20 items-center">
-                    <Link to={'/'}>
-                    <li className="">Home</li>
-                    </Link>
-                    <Link to={'/profile'}>
+                    {user === '' ? '' : <NavLink to={'/profile'} className={({ isActive }) => isActive ? "activeStyle" : "notActive"}>
                     <li>Profile</li>
-                    </Link>
-                    <Link to={'/findtea'}>
-                    <li>Teas</li>
-                    </Link>
-                    { user === '' ? <Link to={'/login'}><li className="inOut">Sign In</li></Link > : <li onClick={logout} className="inOut">Sign Out</li>}
+                    </NavLink>}
+                    <NavLink to={'/collection'} className={({ isActive }) => isActive ? "activeStyle" : "notActive"}>
+                    <li>Collection</li>
+                    </NavLink>
+                    <NavLink to={'/teagenerator'} className={({ isActive }) => isActive ? "activeStyle" : "notActive"}>
+                    <li>Tea Generator</li>
+                    </NavLink>
+                    { user === '' ? <NavLink to={'/login'}><li className="inOut">Sign In</li></NavLink > : <li onClick={logout} className="inOut">Sign Out</li>}
                 </div>
             </ul>
         </nav>

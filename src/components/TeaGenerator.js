@@ -4,6 +4,8 @@ import './teagenerator.css'
 import axios from 'axios'
 import * as Yup from "yup";
 import Head from './Head'
+import { useUserStore } from './useStore'
+import { Link, useNavigate } from "react-router-dom";
 
 
 const AnswersSchema = Yup.object().shape({
@@ -17,6 +19,9 @@ function TeaGenerator(){
 
   const url = `http://localhost:4000/teas`;
   const [teas, setTeas] = useState([]);
+  const navigate = useNavigate()
+  const user = useUserStore((state) => state.user)
+  const userID = useUserStore((state) => state.userID)
 
   const getTeas = async (values, res) => {
     await axios.get(url, {
@@ -33,7 +38,21 @@ function TeaGenerator(){
     document.querySelector('.teaResults').style.display = 'block'
   })}
 
+  const addToCollection = async (res) => {
+    await axios.post(`http://localhost:4000/addTea`, userID, {
+      params: {
+        id: teas[0]._id,
+        user: userID
+      }
+      })
+    .then(res => {
+      if(res) navigate('/profile')
+    })
+  }
+
     return(
+    <div>
+    <Head />
     <div className="teaForm">
     <Formik
       initialValues={{
@@ -181,11 +200,18 @@ function TeaGenerator(){
               <li className="profile"><strong>Profile:</strong> {c.profile}</li>
               <li className="desc"><strong>Description:</strong> {c.desc}</li>
               <li><strong>Origin:</strong> {c.region}</li>
-              <li><i className="teaButton fas fa-mug-hot"></i></li>
+              <li>{user === '' ? <div>
+              <button className="disabledTeaButton" disabled={true}>Add to Collection</button>
+              <Link to={'/login'}>
+              <span className="m-auto block inOut w-fit">Sign In</span>
+              </Link>
+              </div>
+              : <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>}</li>
           </ul>
             </div> ) : <div className="noResults">Sorry, there were no results for your search.</div>}
       </div> 
   </div> 
+  </div>
 )};
 
 export default TeaGenerator
