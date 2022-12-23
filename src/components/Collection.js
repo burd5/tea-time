@@ -63,6 +63,7 @@ function Collection() {
     setFlavor(res.data.teaFlavor)
     setRegion(res.data.teaRegion)
     setCaffeine(res.data.teaCaffeine)
+    document.querySelector('.matchResultDiv').style.display = 'block'
   })}
 
   return (
@@ -125,6 +126,7 @@ function Collection() {
       )}
       </Formik>
     <div>
+    <div className="matchResultDiv" style={{display: 'none'}}>
     {match.length === 0 ? <div><h2 className="font-sans text-4xl mb-10">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="font-sans text-4xl mb-10">Exact Match</h2>}
     {match.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {match.map(c => <div className="teaDesc" key={c._id}>
@@ -135,6 +137,7 @@ function Collection() {
           </ul>
           </div>)}
       </div>}
+    </div>
       {type.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="font-sans text-4xl mb-10">Type</h2>}
       {type.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {type.map(c => <div className="teaDesc" key={c._id}>
