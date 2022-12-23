@@ -1,6 +1,12 @@
+.teaFormDiv{
+    position: relative;
+    top: 160px;
+    padding-bottom: 150px;
+}
+
 .teagenerator{
     font-family: 'Rouge Script', sans-serif;
-    font-size:98px;
+    font-size: 98px;
     font-weight: 500;
     color: rgb(60, 11, 69);
     text-align: center;
@@ -18,7 +24,7 @@
     padding: 20px;
     border-radius: 10px;
     margin-top: 60px;
-    margin-bottom: 60px;
+    padding-bottom: 160px;
     padding: 50px;
     width: 60%;
     align-items: center;

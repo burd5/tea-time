@@ -12,6 +12,11 @@ function Collection() {
 
   const [teas, setTeas] = useState([]);
   const [modalTea, setModalTea] = useState('')
+  const [match, setExactMatch] = useState([])
+  const [type, setType] = useState([])
+  const [flavor, setFlavor] = useState([])
+  const [region, setRegion] = useState([])
+  const [caffeine, setCaffeine] = useState([])
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
   const userID = localStorage.getItem('userID')
@@ -51,7 +56,13 @@ function Collection() {
       }
     })
   .then(res => {
-    setTeas(res.data)
+    console.log(res.data.search)
+    console.log(res.data.exactSearch)
+    setExactMatch(res.data.exactSearch)
+    setType(res.data.teaType)
+    setFlavor(res.data.teaFlavor)
+    setRegion(res.data.teaRegion)
+    setCaffeine(res.data.teaCaffeine)
   })}
 
   return (
@@ -114,15 +125,66 @@ function Collection() {
       )}
       </Formik>
     <div>
+    {match.length === 0 ? <div><h2 className="font-sans text-4xl mb-10">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="font-sans text-4xl mb-10">Exact Match</h2>}
+    {match.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
+        {match.map(c => <div className="teaDesc" key={c._id}>
+          <ul>
+            <img className="teaListImg" src={c.img} alt="" />
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
+          </ul>
+          </div>)}
+      </div>}
+      {type.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="font-sans text-4xl mb-10">Type</h2>}
+      {type.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
+        {type.map(c => <div className="teaDesc" key={c._id}>
+          <ul>
+            <img className="teaListImg" src={c.img} alt="" />
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
+          </ul>
+          </div>)}
+      </div>}
+      {caffeine.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="font-sans text-4xl mb-10">Caffeine</h2>}
+      {caffeine.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
+        {caffeine.map(c => <div className="teaDesc" key={c._id}>
+          <ul>
+            <img className="teaListImg" src={c.img} alt="" />
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
+          </ul>
+          </div>)}
+      </div>}
+      {flavor.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="font-sans text-4xl mb-10">Flavor</h2>}
+      {flavor.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
+        {flavor.map(c => <div className="teaDesc" key={c._id}>
+          <ul>
+            <img className="teaListImg" src={c.img} alt="" />
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
+          </ul>
+          </div>)}
+      </div>}
+      {region.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="font-sans text-4xl mb-10">Region</h2>}
+      {region.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
+        {region.map(c => <div className="teaDesc" key={c._id}>
+          <ul>
+            <img className="teaListImg" src={c.img} alt="" />
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
+              <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
+          </ul>
+          </div>)}
+      </div>}
+      {match.length > 0 || type.length > 0 || region.length > 0 || flavor.length > 0 || caffeine.length > 0 ? <div style={{display:'none'}}></div> : 
       <div className="teaList">
         {teas.map(c => <div className="teaDesc" key={c._id}>
           <ul>
             <img className="teaListImg" src={c.img} alt="" />
-              <li><strong>Name:</strong> {c.name}</li>
-              <li><strong>Type:</strong> {c.type}</li>
+              <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>
               <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
           </ul>
           </div>)}
+        </div>}
       <Modal
         open={open}
         onClose={handleClose}
@@ -130,7 +192,7 @@ function Collection() {
         aria-describedby="modal-modal-description">
         <Box>
           <div className="modal">
-            <h1 className="text-3xl pt-10 font-bold mb-10">{modalTea.name}</h1>
+            <h1 className="modalTeaName text-3xl pt-10 font-bold mb-10">{modalTea.name}</h1>
             <img className="modalteaListImg" src={modalTea.img} alt="tea" />
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
@@ -151,7 +213,7 @@ function Collection() {
       </Modal>
         </div>
     </div>
-  </div>
+
 )};
 
 export default Collection;

@@ -10,7 +10,8 @@ const bcrypt = require('bcrypt');
 const session = require('express-session')
 let bodyParser = require('body-parser');
 const Teas = require('./Models/Teas');
-const User = require('./Models/User')
+const User = require('./Models/User');
+const { response } = require('express');
 const ObjectId = require('mongodb').ObjectId;
 
 
@@ -94,14 +95,14 @@ app.post('/signup', async (req,res) =>{
     validationErrors.push('Passwords do not match')
   } 
   if(validationErrors.length) {
-    res.send(validationErrors)
+    res.send('Error')
   } else{
 
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) {
       validationErrors.push("User Already Exists");
-      res.send(validationErrors)
+      res.send("User Already Exists")
     }
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -111,7 +112,8 @@ app.post('/signup', async (req,res) =>{
         password: hashedPassword,
       });
       await newUser.save();
-      res.send(req.body.username)
+      let currentUser = await User.findOne({ username: req.body.username })
+      res.send(currentUser)
     }
   })};
 });
@@ -153,14 +155,28 @@ app.get('/collection', async (req, res) => {
 
 app.get('/filter', async (req, res) => {
   try {
-    let teaType = req.query.type
-    let teaRegion = req.query.region
-    let teaFlavor = req.query.flavor
-    let teaCaffeine = req.query.caffeine
-      
-    let search = await Teas.find({ $or: [{type: teaType}, {region: teaRegion}, {flavor: {$in: teaFlavor}}, {caffeine: teaCaffeine}]})
+    let type = req.query.type
+    let flavor = req.query.flavor
+    let region = req.query.region
+    let caffeine = req.query.caffeine
 
-    res.send(search)
+    let teaType = await Teas.find({type: type})
+    let teaRegion = await Teas.find({region: region})
+    let teaFlavor = await Teas.find({flavor: flavor})
+    let teaCaffeine = await Teas.find({caffeine: caffeine})
+      
+    let search = await Teas.find({ $or: [{type: type}, {region: region}, {flavor: {$in: flavor}}, {caffeine: caffeine}]})
+
+    let conditions = {}
+
+    if(type != '') conditions.type = type
+    if(flavor != '') conditions.flavor = flavor
+    if(region != '') conditions.region = region
+    if(caffeine != '') conditions.caffeine = caffeine
+
+    let exactSearch = await Teas.aggregate([{ $match: conditions}])
+
+    res.send({exactSearch, search, teaType, teaRegion, teaFlavor, teaCaffeine})
   } catch (error) {
     console.log(error)
   }});

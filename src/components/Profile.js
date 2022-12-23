@@ -46,17 +46,17 @@ export default function Profile() {
 
 
   return (
-    <div className="profiles">
+    <div className="collections">
         <Head />
-        <h1 className="text-4xl text-center mb-10">Favorites</h1>
+        <h1>Favorites</h1>
         <div className="teaList">
         {teas.length > 0 ? teas.map(c => <div className="teaDesc" key={c._id}>
           <ul>
-            <img className="teaListImg" src={c.img} alt="" />
+              <img className="teaListImg" src={c.img} alt="" />
               <li className="text-center text-3xl mb-5 mt-5"><strong>{c.name}</strong></li>
               <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
           </ul>
-          </div>) : <div></div>}
+          </div>) : <div className="noFavs text-2xl font-bold bg-white p-10 rounded-xl mt-24">There are no items in your collection</div>}
         <Modal
         open={open}
         onClose={handleClose}
@@ -73,7 +73,7 @@ export default function Profile() {
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
             <span className="block text-left mx-10 my-5"><strong>Rating:</strong> {modalTea.rating}</span>
             <div>
-            <button onClick={deleteFromCollection} className="modalTeaButton">Delete From Collection</button>
+            <button onClick={deleteFromCollection} className="trashTeaButton"><i className="fa fa-trash"></i></button>
             </div>
           </div>
         </Box>

@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Link, useNavigate} from "react-router-dom"
 import { useUserStore } from './useStore'
 
+
 function Login() {
 
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ function Login() {
             localStorage.setItem('userID', response.data._id)
             navigate('/profile')
         } else {
-        setError(response.data);
+            setError(response.data);
         }
     })}
 

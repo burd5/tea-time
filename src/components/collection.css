@@ -3,15 +3,9 @@
     font-size: 118px;
     color: rgb(60, 11, 69);
     text-align: center;
-    margin-bottom: 30px;
-}
-
-.profiles{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 118px;
-    color: rgb(60, 11, 69);
-    text-align: center;
-    margin-bottom: 30px;
+    position: relative;
+    top: 150px;
+    padding-bottom: 160px;
 }
 
 .teaList{
@@ -20,15 +14,26 @@
     font-family: 'Source Sans Pro';
     display: flex;
     flex-wrap: wrap;
-    gap:50px;
+    gap: 50px;
     justify-content: center;
-    margin-right: 60px;
-    margin-left: 60px;
+}
+
+.teaListProfile{
+    font-size: 44px;
+    list-style: none;
+    font-family: 'Source Sans Pro';
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    position: absolute;
+    top: 150px;
 }
 
 .teaDesc{
     font-size: 24px;
     width: 250px;
+    margin-bottom: 40px;
 }
 
 .teaListImg{
@@ -45,9 +50,6 @@
     margin-bottom: 10px;
 }
 
-.profile{
-    width: 250px;
-}
 
 .teaButton{
     width: fit-content;
@@ -102,8 +104,26 @@
     overflow-y: scroll;
 }
 
+.modalTeaName{
+    font-family: 'Rouge Script';
+    font-size: 74px;
+    color: rgb(60, 11, 69);
+    margin-top: 10px;
+}
+
 .modalTeaButton{
     width: fit-content;
+    font-family: 'Source Sans Pro';
+    font-size: 24px;
+    margin: 0 auto;
+    border: 3px solid rgb(60, 11, 69);
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.trashTeaButton{
+    width: 100px;
     font-family: 'Source Sans Pro';
     font-size: 24px;
     margin: 0 auto;

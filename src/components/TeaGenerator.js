@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import './teagenerator.css'
 import axios from 'axios'
@@ -21,7 +21,11 @@ function TeaGenerator(){
   const [teas, setTeas] = useState([]);
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
-  const userID = useUserStore((state) => state.userID)
+  const userID = localStorage.getItem('userID')
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [])
 
   const getTeas = async (values, res) => {
     await axios.get(url, {
@@ -51,7 +55,7 @@ function TeaGenerator(){
   }
 
     return(
-    <div>
+    <div className="teaFormDiv">
     <Head />
     <div className="teaForm">
     <Formik

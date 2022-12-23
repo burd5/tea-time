@@ -1,6 +1,17 @@
 .nav{
     font-family: 'Source Sans Pro';
-    color: rgb(60, 11, 69);
+    color: #fff;
+    background: rgb(60, 11, 69);
+    padding: 20px;
+    box-shadow: 0px 5px 15px 0px black;
+    position: fixed;
+    padding-right: 60px;
+    padding-left: 60px;
+    margin-top: 0px;
+    margin-left: 0px;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .navItems{
@@ -12,11 +23,16 @@
     font-family: 'Source Sans Pro';
     font-weight: bold;
     font-size: 40px;
+    background: #fff;
+    color: rgb(60, 11, 69);
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(60, 11, 69);
 }
 
 .inOut{
-    color: #fff;
-    background-color: rgb(60, 11, 69);
+    color: rgb(60, 11, 69);
+    background-color: #fff;
     font-weight: bold;
     padding: 2px 25px;
     border-radius: 25px;
@@ -24,15 +40,14 @@
 }
 
 .mug{
-    font-size: 45px;
+    height: 70px;
+    width: 70px;
 }
 
 .activeStyle {
     text-decoration: none;
-    color: rgb(60, 11, 69);
-    background-color: rgb(252, 221, 185);
-    border-radius: 10px;
-    border: 1px solid rgb(252,221,185);
+    color: #fff;
+    border-bottom: 5px solid #fff;
     padding: 5px 20px;
 }
 
