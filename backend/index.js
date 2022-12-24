@@ -176,7 +176,7 @@ app.get('/filter', async (req, res) => {
 
     let exactSearch = await Teas.aggregate([{ $match: conditions}])
 
-    res.send({exactSearch, search, teaType, teaRegion, teaFlavor, teaCaffeine})
+    res.send({exactSearch, search, teaType, teaRegion, teaFlavor, teaCaffeine, type, flavor, region, caffeine, conditions})
   } catch (error) {
     console.log(error)
   }});
