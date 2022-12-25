@@ -15,6 +15,7 @@ function Collection() {
   const [match, setExactMatch] = useState([])
   const [type, setType] = useState([])
   const [flavor, setFlavor] = useState([])
+  const [modalFlavors, setModalFlavors] = useState([])
   const [region, setRegion] = useState([])
   const [caffeine, setCaffeine] = useState([])
   const [typeHead, setTypeHead] = useState('')
@@ -37,6 +38,7 @@ function Collection() {
   const handleOpen = tea => () => {
     setOpen(true);
     setModalTea(tea)
+    setModalFlavors(tea.flavor)
   }
   const handleClose = () => setOpen(false);
 
@@ -211,13 +213,13 @@ function Collection() {
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
             <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
-            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalTea.flavor}</span>
+            <span className="block text-left mx-10 my-5"><strong>Flavor: </strong>{modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ? <span key={e}>{e + ',' + ' '}</span> : <span key={e}>{e}</span>)}</span>
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
             <div>
             {user === '' ? <div>
               <button className="disabledTeaButton" disabled={true}>Add to Collection</button>
               <Link to={'/login'}>
-              <span className="m-auto block inOut w-fit">Sign In</span>
+              <span className="modalTeaButton m-auto block inOut w-fit">Sign In</span>
               </Link>
               </div>
               : <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>}

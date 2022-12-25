@@ -11,7 +11,7 @@ let TeaSchema = new Schema({
     type: String
   },
   flavor: {
-    type: String
+    type: Array
   },
   caffeine: {
     type: String

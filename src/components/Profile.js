@@ -56,7 +56,7 @@ export default function Profile() {
               <li className="text-center text-3xl mb-5 mt-5"><strong>{c.name}</strong></li>
               <li><i onClick={handleOpen(c)} className="teaButton fas fa-mug-hot"></i></li>
           </ul>
-          </div>) : <div className="noFavs text-2xl font-bold bg-white p-10 rounded-xl mt-24">There are no items in your collection</div>}
+          </div>) : <div className="noFavs text-2xl font-bold bg-white p-10 rounded-xl">There are no items in your collection</div>}
         <Modal
         open={open}
         onClose={handleClose}
