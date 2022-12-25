@@ -19,7 +19,7 @@ let TeaSchema = new Schema({
   user: {
     type: String,
     ref: 'User',
-},
+}
 });
 
 const Teas = mongoose.model('Tea', TeaSchema)

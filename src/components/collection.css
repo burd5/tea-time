@@ -16,6 +16,8 @@
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .teaListProfile{
@@ -81,10 +83,10 @@ select {
     color: rgb(60, 11, 69);
     padding: 0px 20px;
     border-radius: 20px;
-    border-bottom: 2px solid rgb(60, 11, 69);
-    margin-right: 70px;
-    margin-left: 70px;
+    border: 2px solid rgb(60, 11, 69);
+    margin: 0 auto;
     margin-bottom: 20px;
+    width: 60%;
 }
 
 .filterCat{
@@ -157,6 +159,17 @@ select {
     border: 3px solid rgb(60, 11, 69);
     border-radius: 10px;
     padding: 10px;
+    background-color: #fff;
+}
+
+.ratingTeaButton{
+    width: fit-content;
+    font-family: 'Source Sans Pro';
+    font-size: 24px;
+    display: inline;
+    border: 3px solid rgb(60, 11, 69);
+    border-radius: 10px;
+    padding: 0px 15px;
     background-color: #fff;
 }
 

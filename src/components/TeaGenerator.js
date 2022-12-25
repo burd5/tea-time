@@ -207,7 +207,7 @@ function TeaGenerator(){
               <li>{user === '' ? <div>
               <button className="disabledTeaButton" disabled={true}>Add to Collection</button>
               <Link to={'/login'}>
-              <span className="m-auto block inOut w-fit">Sign In</span>
+              <span className="modalTeaButton m-auto block inOut w-fit">Sign In</span>
               </Link>
               </div>
               : <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>}</li>

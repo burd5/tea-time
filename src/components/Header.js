@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import {useUserStore} from './useStore'
 
 function Header() {
-    const user = useUserStore((state) => state.user)
+    const user = localStorage.getItem('user')
     const setUser = useUserStore(state => state.setUser)
 
     const logout = async (req, res) => {
@@ -28,7 +28,7 @@ function Header() {
                         Find a Tea
                     </button>
                 </Link>
-                { user === '' || user === 'Tea Time'? 
+                { user === '' || user === 'Tea Time' || !user ? 
                 <Link to={'/login'}>
                     <button>
                         Log In

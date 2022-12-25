@@ -11,6 +11,7 @@ export default function Profile() {
 
   const [teas, setTeas] = useState([]);
   const [modalTea, setModalTea] = useState('')
+  const [modalFlavors, setModalFlavors] = useState([])
   const userID = localStorage.getItem('userID')
  
 
@@ -21,7 +22,6 @@ export default function Profile() {
       }})
     .then(res => {
       setTeas(res.data);
-      console.log(res.data)
     })
   }, [userID])
 
@@ -29,6 +29,7 @@ export default function Profile() {
   const handleOpen = tea => () => {
     setOpen(true);
     setModalTea(tea)
+    setModalFlavors(tea.flavor)
   }
   const handleClose = () => setOpen(false);
 
@@ -69,9 +70,9 @@ export default function Profile() {
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
             <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
-            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalTea.flavor}</span>
+            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ? <span key={e}> {e + ',' + ' '}</span> : <span key={e}>{e}</span>)}
+            </span>
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
-            <span className="block text-left mx-10 my-5"><strong>Rating:</strong> {modalTea.rating}</span>
             <div>
             <button onClick={deleteFromCollection} className="trashTeaButton"><i className="fa fa-trash"></i></button>
             </div>
