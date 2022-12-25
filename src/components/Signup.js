@@ -30,11 +30,9 @@ function Signup() {
           confirmPassword: confirmPassword,
       })
     .then(response => {
-        if(response.data === 'Error'){
-            setError(['Username cannot be blank', 'Password must be 8 characters long', 'Passwords must match'])
-        }
-        else if(response.data === "User Already Exists"){
-            setError(['User Already Exists'])
+        console.log(response)
+        if(response.data.length > 0){
+            setError(response.data)
         }
         else if(response.data) {
             setUser(response.data.username)

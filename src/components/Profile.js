@@ -64,7 +64,7 @@ export default function Profile() {
         aria-describedby="modal-modal-description">
         <Box>
           <div className="modal">
-            <h1 className="text-3xl pt-10 font-bold mb-10">{modalTea.name}</h1>
+            <h1 className="modalTeaName text-3xl pt-10 font-bold mb-10">{modalTea.name}</h1>
             <img className="modalteaListImg" src={modalTea.img} alt="tea" />
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>

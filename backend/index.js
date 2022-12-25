@@ -95,14 +95,14 @@ app.post('/signup', async (req,res) =>{
     validationErrors.push('Passwords do not match')
   } 
   if(validationErrors.length) {
-    res.send('Error')
+    res.send(validationErrors)
   } else{
 
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) {
       validationErrors.push("User Already Exists");
-      res.send("User Already Exists")
+      res.send(validationErrors)
     }
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
