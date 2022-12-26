@@ -211,7 +211,7 @@ function Collection() {
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
             <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
-            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ?  <span key={e}> {e + `',' + ' '`}</span> :  <span key={e}> {e} </span>)}</span>
+            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ? <span key={e}> {e + ',' + ' '}</span> : <span key={e}> {e} </span>)}</span>
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
             <div>
             {user === '' ? <div>
