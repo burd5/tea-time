@@ -4,7 +4,6 @@
     background: rgb(60, 11, 69);
     padding: 10px 20px;
     border-bottom: 5px solid #fff;
-    position: fixed;
     padding-right: 60px;
     padding-left: 60px;
     margin-top: 0px;
@@ -12,6 +11,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
+    position: fixed;
 }
 
 .navItems{

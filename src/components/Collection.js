@@ -22,7 +22,6 @@ function Collection() {
   const [flavorHead, setFlavorHead] = useState('')
   const [regionHead, setRegionHead] = useState('')
   const [caffeineHead, setCaffeineHead] = useState('')
-  const [conditions, setConditions] = useState({})
   const [conditionValues, setConditionValues] = useState([])
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
@@ -73,9 +72,8 @@ function Collection() {
     setFlavorHead(res.data.flavor)
     setCaffeineHead(res.data.caffeine)
     setRegionHead(res.data.region)
-    setConditions(res.data.conditions)
     setConditionValues(Object.values(res.data.conditions))
-
+   
     document.querySelector('.matchResultDiv').style.display = 'block'
   })}
 
@@ -140,7 +138,7 @@ function Collection() {
       </Formik>
     <div>
     <div className="matchResultDiv" style={{display: 'none'}}>
-    {match.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + value.slice(1) + ' ' + '&' + ' ' : value[0].toUpperCase() + value.slice(1))})</span></h2>}
+    {match.length === 0 || conditionValues.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + `${value.slice(1)} + ' ' + '&' + ' '` : value[0].toUpperCase() + value.slice(1))})</span></h2>}
     {match.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {match.map(c => <div className="teaDesc" key={c._id}>
           <ul>
@@ -151,7 +149,7 @@ function Collection() {
           </div>)}
       </div>}
     </div>
-      {type.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">{typeHead}</h2>}
+      {type.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">All Teas (Type: {typeHead})</h2>}
       {type.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {type.map(c => <div className="teaDesc" key={c._id}>
           <ul>
@@ -161,7 +159,7 @@ function Collection() {
           </ul>
           </div>)}
       </div>}
-      {caffeine.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">{caffeineHead}</h2>}
+      {caffeine.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">All Teas ({caffeineHead} Caffeine)</h2>}
       {caffeine.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {caffeine.map(c => <div className="teaDesc" key={c._id}>
           <ul>
@@ -171,7 +169,7 @@ function Collection() {
           </ul>
           </div>)}
       </div>}
-      {flavor.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">{flavorHead[0].toUpperCase() + flavorHead.slice(1)}</h2>}
+      {flavor.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">All Teas (Flavor: {flavorHead[0].toUpperCase() + flavorHead.slice(1)})</h2>}
       {flavor.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {flavor.map(c => <div className="teaDesc" key={c._id}>
           <ul>
@@ -181,7 +179,7 @@ function Collection() {
           </ul>
           </div>)}
       </div>}
-      {region.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">{regionHead}</h2>}
+      {region.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">All Teas (Region: {regionHead})</h2>}
       {region.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {region.map(c => <div className="teaDesc" key={c._id}>
           <ul>
@@ -213,7 +211,7 @@ function Collection() {
             <span className="block text-left mx-10 my-5"><strong>Origin:</strong> {modalTea.region}</span>
             <p className="text-left mx-10 my-5"><strong>Description: </strong> {modalTea.desc}</p>
             <p className="text-left mx-10 mt-5"><strong>Profile:</strong> {modalTea.profile}</p>
-            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ?  <span key={e}> {e + ',' + ' '}</span> :  <span key={e}> {e} </span>)}</span>
+            <span className="block text-left mx-10 my-5"><strong>Flavor:</strong> {modalFlavors.map( (e, index) => index !== modalFlavors.length - 1 ?  <span key={e}> {e + `',' + ' '`}</span> :  <span key={e}> {e} </span>)}</span>
             <span className="block text-left mx-10 my-5"><strong>Caffeine:</strong> {modalTea.caffeine}</span>
             <div>
             {user === '' ? <div>

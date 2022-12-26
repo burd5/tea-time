@@ -33,7 +33,7 @@ export default function Head() {
             <ul className="flex justify-between">
                 <Link to={'/'}>
                 <div className="flex items-center">
-                <img src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug fas fa-mug-hot mr-5'></img><li className="logo">{ user === '' ? 'Tea Time' : user}</li>
+                <img src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug fas fa-mug-hot mr-5' alt="logo"></img><li className="logo">{ user === '' ? 'Tea Time' : user}</li>
                 </div>
                 </Link>
               

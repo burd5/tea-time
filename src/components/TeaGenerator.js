@@ -212,7 +212,7 @@ function TeaGenerator(){
               </div>
               : <button onClick={addToCollection} className="modalTeaButton">Add to Collection</button>}</li>
           </ul>
-            </div> ) : <div className="noResults">Sorry, there were no results for your search.</div>}
+            </div> ) : <div className="noResults">Sorry, there were no results for your search. </div>}
       </div> 
   </div> 
   </div>

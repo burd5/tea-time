@@ -88,8 +88,6 @@ label{
     color: black;
     display: none;
     margin: 0 auto;
-    background-color: rgb(255, 247, 178);
-    border: 2px solid rgb(60, 11, 69);
 }
 
 .teaResults img{
@@ -118,13 +116,8 @@ label{
     padding: 20px;
     width: 85%;
     margin: 0 auto;
-}
-
-.noResults{
-    margin: 0 auto;
-    background-color: #fff;
-    color: red;
-    font-size: 30px;
+    background-color: rgb(255, 247, 178);
+    border: 2px solid rgb(60, 11, 69);
 }
 
 .teaButton{
@@ -142,4 +135,12 @@ label{
     padding: 10px;
     background-color: rgb(60, 11, 69);
     color: #fff;
+}
+
+.noResults{
+    margin: 0 auto;
+    background-color: #fff;
+    color: red;
+    font-size: 30px;
+    border: none;
 }
