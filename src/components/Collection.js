@@ -138,7 +138,7 @@ function Collection() {
       </Formik>
     <div>
     <div className="matchResultDiv" style={{display: 'none'}}>
-    {match.length === 0 || conditionValues.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + `${value.slice(1)} + ' ' + '&' + ' '` : value[0].toUpperCase() + value.slice(1))})</span></h2>}
+    {match.length === 0 || conditionValues.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + value.slice(1) + ' ' + '&' + ' ' : value[0].toUpperCase() + value.slice(1))})</span></h2>}
     {match.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
         {match.map(c => <div className="teaDesc" key={c._id}>
           <ul>
