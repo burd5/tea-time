@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import {useUserStore} from './useStore'
 
 function Header() {
-    const user = localStorage.getItem('user')
+    const user = useUserStore((state) => state.user)
     const setUser = useUserStore(state => state.setUser)
 
     const logout = async (req, res) => {

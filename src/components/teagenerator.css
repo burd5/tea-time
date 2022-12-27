@@ -88,6 +88,7 @@ label{
     color: black;
     display: none;
     margin: 0 auto;
+    width: 90%;
 }
 
 .teaResults img{
@@ -114,7 +115,7 @@ label{
 
 .teaItem{
     padding: 20px;
-    width: 85%;
+    width: 100%;
     margin: 0 auto;
     background-color: rgb(255, 247, 178);
     border: 2px solid rgb(60, 11, 69);
