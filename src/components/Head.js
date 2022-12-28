@@ -3,6 +3,7 @@ import './nav.css'
 import { NavLink, Link, useNavigate} from "react-router-dom"
 import axios from 'axios'
 import { useUserStore } from './useStore'
+import MobileMenu from './MobileMenu'
 
 export default function Head() {
 
@@ -30,12 +31,15 @@ export default function Head() {
   return (
     <div>
         <nav className="nav m-10">
-            <ul className="flex justify-between">
+            <ul className="flex justify-between items-center">
                 <Link to={'/'}>
                 <div className="flex items-center">
-                <img src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug fas fa-mug-hot mr-5' alt="logo"></img><li className="logo">{ user === '' ? 'Tea Time' : user}</li>
+                <img src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug fas fa-mug-hot mr-5' alt="logo"></img><li className="logo inline">{ user === '' ? 'Tea Time' : user}</li>
                 </div>
                 </Link>
+                <div>
+                <MobileMenu />
+                </div>
               
                 <div className="navItems flex gap-20 items-center">
                     {user === '' ? '' : <NavLink to={'/profile'} className={({ isActive }) => isActive ? "activeStyle" : "notActive"}>

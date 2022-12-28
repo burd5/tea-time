@@ -1,17 +1,8 @@
 import React, { useState } from 'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik'
 import './login.css'
 import axios from 'axios'
-import * as Yup from "yup";
 import {Link, useNavigate} from "react-router-dom"
 import {useUserStore} from './useStore'
-
-const FormSchema = Yup.object().shape({
-    username: Yup.string().required('Required'),
-    pass: Yup.string().required('Required').min(8, 'Password must be 8 characters long'),
-    confirmPass: Yup.string().required('Required').oneOf([Yup.ref('pass'), null], 'Must match "password" field value')
-  });
-
 function Signup() {
 
     const navigate = useNavigate()
@@ -86,4 +77,4 @@ function Signup() {
   )
 }
 
-export default  Signup
+export default Signup

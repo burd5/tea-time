@@ -145,3 +145,34 @@ label{
     font-size: 30px;
     border: none;
 }
+
+@media screen and (max-width: 1350px){
+    .teaForm{
+        width: 80%;
+        align-items: start;
+    }
+    .questions{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100px;
+    }
+    label{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .questions{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 100px;
+    }
+    .teagenerator{
+        font-size: 70px;
+    }
+    label{
+        font-size: 30px;
+    }
+}

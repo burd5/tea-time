@@ -161,7 +161,7 @@ function Collection() {
       </div>}
       {caffeine.length === 0 ? <div style={{display: 'none'}}></div> : <h2 className="searchHeader">All Teas ({caffeineHead} Caffeine)</h2>}
       {caffeine.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
-        {caffeine.map(c => <div className="teaDesc" key={c._id}>
+        {caffeine.map(c => <div className="teaDesc">
           <ul>
             <img className="teaListImg" src={c.img} alt="" />
               <li className="mt-5 mb-5"><strong>Name:</strong> {c.name}</li>

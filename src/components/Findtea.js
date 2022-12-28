@@ -7,8 +7,7 @@ function Findtea() {
   return (
     <div className="findTea">
       <Head />
-        <div className="flex justify-center gap-20 mt-24">
-            
+        <div className="findTeaSections flex justify-center gap-20 mt-24">
             <div className="collection w-1/2 bg-white">
             <Link to={'/collection'}>
                 <h3>Search the Collection</h3>

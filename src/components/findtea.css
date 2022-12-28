@@ -31,3 +31,29 @@
     margin: 0 auto;
     margin-bottom: 30px;
 }
+
+@media screen and (max-width: 1350px){
+    .findTeaSections{
+        display: block;
+        padding-bottom: 40px;
+    }
+    .collection,
+    .generator{
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .findTeaSections{
+        display: block;
+        padding-bottom: 40px;
+    }
+    .collection,
+    .generator{
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
+}
