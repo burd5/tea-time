@@ -33,6 +33,10 @@ function Collection() {
     })
   }, [])
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [])
+
   const [open, setOpen] = useState(false);
   const handleOpen = tea => () => {
     setOpen(true);

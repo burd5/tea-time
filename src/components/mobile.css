@@ -2,6 +2,14 @@
     display: none;
 }
 
+.mug2{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 750px){
     .dropdown{

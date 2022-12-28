@@ -40,7 +40,7 @@
     cursor: pointer;
 }
 
-.mug{
+.mug1{
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -65,6 +65,10 @@
 @media screen and (max-width: 700px){
     .navMobile{
         height: 100px;
-        align-items: center;
+        justify-content: space-between;
+        margin-left: 50px;
+    }
+    .mug1{
+        display: none;
     }
 }

@@ -148,7 +148,7 @@ label{
 
 @media screen and (max-width: 1350px){
     .teaForm{
-        width: 80%;
+        width: 90%;
         align-items: start;
     }
     .questions{
@@ -157,9 +157,6 @@ label{
         flex-wrap: wrap;
         height: 100px;
     }
-    label{
-        font-size: 30px;
-    }
 }
 
 @media screen and (max-width: 700px){
@@ -167,12 +164,34 @@ label{
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        height: 100px;
+        height: 120px;
     }
     .teagenerator{
         font-size: 70px;
+        margin-left: 80px;
+    }
+    .teaForm{
+        align-items: start;
+    }
+    .questions,
+    .teaQuestion{
+        margin-left: 40px;
     }
     label{
-        font-size: 30px;
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+    .teaQuizButton{
+        margin: 0;
+        margin-left: 130px;
+    }
+    .teaResults,
+    .teaFormDiv{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .teaResults img{
+        height: 350px;
+        width: 400px;
     }
 }

@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Drawer from '@mui/material/Drawer';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from './useStore'
 import axios from 'axios'
@@ -23,15 +23,18 @@ export default function MobileMenu() {
     }})
   }
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [])
+
   const loggedIn = [
     { name: "Profile", icon: <HomeIcon />, link: '/profile' },
     { name: "Collection", icon: <HomeIcon />, link: '/collection' },
     { name: "Tea Generator", icon: <HomeIcon />, link: '/teagenerator'},
-    { name: "Logout", icon: <HomeIcon />, link: logout}
+    { name: "Logout", icon: <HomeIcon />, action: logout}
   ];
 
   const loggedOut = [
-    { name: "Profile", icon: <HomeIcon />, link: '/profile' },
     { name: "Collection", icon: <HomeIcon />, link: '/collection' },
     { name: "Tea Generator", icon: <HomeIcon />, link: '/teagenerator'},
     { name: "Sign In", icon: <HomeIcon />, link: '/login' },
@@ -45,7 +48,7 @@ export default function MobileMenu() {
     const getList = () => (
       <div className="dropdownList" onClick={() => setOpen(false)}>
         {user !== '' ? loggedIn.map((item, index) => (
-          <Link onClick={item.link} key={index}>
+          <Link to={item.link} key={index}>
           <ListItem>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText onClick={item.action} primary={item.name} />
@@ -64,7 +67,7 @@ export default function MobileMenu() {
 
     return (
       <div className="dropdown">
-        <ArrowDropDownCircleIcon sx={{fontSize: 60, cursor: 'pointer'}} onClick={() => setOpen(true)}/>
+        <img onClick={() => setOpen(true)} src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug2 fas fa-mug-hot' alt="logo"></img>
         <Drawer open={open} anchor={"top"} onClose={() => setOpen(false)}>
           {getList()}
         </Drawer>

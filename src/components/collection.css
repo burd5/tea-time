@@ -5,7 +5,7 @@
     text-align: center;
     position: relative;
     top: 120px;
-    padding-bottom: 160px;
+    padding-bottom: 150px;
 }
 
 .teaList{
@@ -194,4 +194,24 @@ select {
 
 .noFavs{
     border: 2px solid rgb(60, 11, 69);
+}
+
+
+@media screen and (max-width: 700px){
+    .filterCat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .modal{
+        width: 100%;
+    }
+    .teaSearchButton{
+        margin-top: 20px;
+        display: block;
+    }
+    .filterCat select{
+        margin-right: 0;
+    }
+    
 }
