@@ -4,7 +4,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from './useStore'
 import axios from 'axios'
@@ -67,7 +66,7 @@ export default function MobileMenu() {
 
     return (
       <div className="dropdown">
-        <img onClick={() => setOpen(true)} src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug2 fas fa-mug-hot' alt="logo"></img>
+        <img onClick={() => setOpen(true)} src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug2 block fas fa-mug-hot' alt="logo"></img>
         <Drawer open={open} anchor={"top"} onClose={() => setOpen(false)}>
           {getList()}
         </Drawer>

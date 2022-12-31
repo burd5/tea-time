@@ -64,14 +64,10 @@
 
 @media screen and (max-width: 700px){
     .navMobile{
-        height: 100px;
+        height: fit-content;
         justify-content: space-between;
-        margin-left: 50px;
     }
     .mug1{
         display: none;
-    }
-    .mug2{
-        margin-bottom: 10px;
     }
 }

@@ -3,8 +3,8 @@
 }
 
 .mug2{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     border: 2px solid white;
     cursor: pointer;
@@ -17,5 +17,8 @@
     }
     .navItems{
         display: none;
+    }
+    .nav{
+        padding: 10px;
     }
 }

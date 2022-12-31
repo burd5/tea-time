@@ -30,16 +30,14 @@ export default function Head() {
 
   return (
     <div>
-        <nav className="nav m-10">
+        <nav className="nav">
             <ul className="navMobile flex justify-between items-center">
                 <Link to={'/'}>
                 <div className="flex items-center">
                 <img src="https://static-00.iconduck.com/assets.00/warm-tea-icon-256x256-ubx0ccp7.png" className='mug1 fas fa-mug-hot mr-5' alt="logo"></img><li className="logo inline-block">{ user === '' ? 'Tea Time' : user}</li>
                 </div>
                 </Link>
-                <div>
                 <MobileMenu />
-                </div>
               
                 <div className="navItems flex gap-20 items-center">
                     {user === '' ? '' : <NavLink to={'/profile'} className={({ isActive }) => isActive ? "activeStyle" : "notActive"}>
