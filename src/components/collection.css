@@ -196,6 +196,35 @@ select {
     border: 2px solid rgb(60, 11, 69);
 }
 
+@media screen and (max-width: 1415px){
+    .teaSearchButton{
+        margin-top: 20px;
+    }
+    
+}
+
+@media screen and (max-width: 1220px){
+    .teaSearchButton{
+        margin-top: 40px;
+    }
+    .filterCat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .filterCat select{
+        margin-right: 0;
+        width: 50%;
+    }
+    
+}
+
+@media screen and (max-width: 1000px){
+    .collections{
+        top: 80px;
+    }
+    
+}
 
 @media screen and (max-width: 700px){
     .filterCat{
@@ -212,6 +241,7 @@ select {
     }
     .filterCat select{
         margin-right: 0;
+        width: 60%;
     }
     
 }

@@ -149,44 +149,42 @@ label{
 @media screen and (max-width: 1350px){
     .teaForm{
         width: 90%;
-        align-items: start;
+        align-items: center;
     }
-    .questions{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        height: 100px;
+    
+}
+
+@media screen and (max-width: 1000px){
+    .teaFormDiv{
+        top: 60px;
     }
+    
 }
 
 @media screen and (max-width: 700px){
-    .questions{
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        height: 120px;
-    }
-    .teagenerator{
-        font-size: 70px;
-    }
-    .teaForm{
-        align-items: start;
-    }
-    label{
-        font-size: 22px;
-        margin-bottom: 5px;
-    }
-    .teaQuizButton{
-        margin: 0;
-        margin-left: 130px;
-    }
     .teaResults,
     .teaFormDiv{
         width: 100%;
         margin-top: 10px;
+        top: 60px;
     }
     .teaResults img{
         height: 350px;
         width: 400px;
+    }
+    .teagenerator{
+        font-size: 70px;
+    }
+}
+
+
+
+@media screen and (max-width: 500px){
+    .teagenerator{
+        font-size: 60px;
+    }
+    .questions{
+        display: flex;
+        flex-direction: column;
     }
 }

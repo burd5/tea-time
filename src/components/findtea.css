@@ -45,7 +45,10 @@
     }
 }
 
-@media screen and (max-width: 950px){
+@media screen and (max-width: 1000px){
+    .findTea{
+        top: 40px;
+    }
     .findTeaSections{
         display: block;
         padding-bottom: 40px;
