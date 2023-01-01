@@ -168,14 +168,9 @@ label{
     }
     .teagenerator{
         font-size: 70px;
-        margin-left: 80px;
     }
     .teaForm{
         align-items: start;
-    }
-    .questions,
-    .teaQuestion{
-        margin-left: 40px;
     }
     label{
         font-size: 22px;

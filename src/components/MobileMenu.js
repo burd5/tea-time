@@ -3,7 +3,11 @@ import Drawer from '@mui/material/Drawer';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import BuildIcon from '@mui/icons-material/Build';
 import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from './useStore'
 import axios from 'axios'
@@ -27,16 +31,16 @@ export default function MobileMenu() {
   }, [])
 
   const loggedIn = [
-    { name: "Profile", icon: <HomeIcon />, link: '/profile' },
-    { name: "Collection", icon: <HomeIcon />, link: '/collection' },
-    { name: "Tea Generator", icon: <HomeIcon />, link: '/teagenerator'},
-    { name: "Logout", icon: <HomeIcon />, action: logout}
+    { name: "Profile", icon: <AccountBoxIcon />, link: '/profile' },
+    { name: "Collection", icon: <BookmarksIcon />, link: '/collection' },
+    { name: "Tea Generator", icon: <BuildIcon />, link: '/teagenerator'},
+    { name: "Logout", icon: <LogoutIcon />, action: logout}
   ];
 
   const loggedOut = [
-    { name: "Collection", icon: <HomeIcon />, link: '/collection' },
-    { name: "Tea Generator", icon: <HomeIcon />, link: '/teagenerator'},
-    { name: "Sign In", icon: <HomeIcon />, link: '/login' },
+    { name: "Collection", icon: <BookmarksIcon />, link: '/collection' },
+    { name: "Tea Generator", icon: <BuildIcon />, link: '/teagenerator'},
+    { name: "Sign In", icon: <LoginIcon />, link: '/login' },
   ];
 
     const [open, setOpen] = useState(false);
