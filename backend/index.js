@@ -1,6 +1,6 @@
 let express = require('express');
 let mongoose = require('mongoose');
-let cors = require('cors');
+const cors = require('cors');
 const logger = require('morgan')
 const validator = require('validator')
 const passport = require('passport');
