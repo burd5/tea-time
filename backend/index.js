@@ -17,6 +17,14 @@ const ObjectId = require('mongodb').ObjectId;
 
 const app = express();
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  next();
+}
+
 require('./config/passport')(passport);
 
 // Middleware
@@ -31,6 +39,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+app.use(allowCrossDomain);
 app.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
