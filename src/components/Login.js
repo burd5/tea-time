@@ -8,7 +8,7 @@ import { useUserStore } from './useStore'
 function Login() {
 
     const navigate = useNavigate();
-    const url = `http://localhost:4000/login`;
+    const url = 'http://localhost:4000/login';
     const [username, setLoginUsername] = useState('')
     const [password, setLoginPassword] = useState('')
     const [errors, setError] = useState('')
