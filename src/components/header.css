@@ -55,11 +55,11 @@ button:hover{
         display: block;
         margin: 0 auto;
         text-align: center;
-        width: fit-content;
     }
 
     .teaImg{
-        height: 300px;
+        width: 80%;
+        height: 50%;
     }
 
     .header{
@@ -76,4 +76,5 @@ button:hover{
     button{
         width: 325px;
     }
+
 }
