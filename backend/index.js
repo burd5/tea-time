@@ -17,11 +17,6 @@ const ObjectId = require('mongodb').ObjectId;
 
 const app = express();
 
-/*app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});*/
 
 require('./config/passport')(passport);
 
@@ -38,7 +33,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: "https://tea-time-vert.vercel.app",
+  origin: 'http://localhost:3000',
   credentials: true,
   resave: false,
   saveUninitialized: false,

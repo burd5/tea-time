@@ -140,6 +140,7 @@ label{
 
 .noResults{
     margin: 0 auto;
+    text-align: center;
     background-color: #fff;
     color: red;
     font-size: 30px;
