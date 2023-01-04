@@ -251,3 +251,10 @@ select {
     }
     
 }
+
+@media screen and (max-width: 500px){
+    .collectionsTitle{
+        font-size: 80px;
+    }
+    
+}
