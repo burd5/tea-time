@@ -17,7 +17,7 @@ const AnswersSchema = Yup.object().shape({
 
 function TeaGenerator(){
 
-  const url = 'https://tea-time-vert.vercel.app//teas';
+  const url = `http://localhost:4000/teas`;
   const [teas, setTeas] = useState([]);
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
