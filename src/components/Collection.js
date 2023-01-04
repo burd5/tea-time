@@ -28,7 +28,7 @@ function Collection() {
   const userID = localStorage.getItem('userID')
 
   useEffect(() => {
-    axios.get("https://tea-time-vert.vercel.app:4000/collection").then(res => {
+    axios.get('http://localhost:4000/collection').then(res => {
       setTeas(res.data);
     })
   }, [])
@@ -58,7 +58,7 @@ function Collection() {
   }
 
   const filterCollection = async (values, res) => {
-    await axios.get("https://tea-time-vert.vercel.app:4000/filter", {
+    await axios.get('http://localhost:4000/filter', {
       params: {
         type: values.type,
         flavor: values.flavor,
