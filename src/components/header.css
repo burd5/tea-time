@@ -55,7 +55,15 @@ button:hover{
         display: block;
         margin: 0 auto;
         text-align: center;
-        width: 90%;
+        width: fit-content;
+    }
+
+    .teaImg{
+        height: 300px;
+    }
+
+    .header{
+        font-size: 90px;
     }
     .headerList{
         display: flex;
@@ -63,5 +71,9 @@ button:hover{
         align-items: center;
         margin: 0 auto;
         margin-top: 40px;
+    }
+
+    button{
+        width: 325px;
     }
 }
