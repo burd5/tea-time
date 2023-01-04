@@ -151,7 +151,7 @@ app.get('/userCollection', async function(req, res){
     console.log(error)
   }});
 
-app.get('/collection', async (req, res) => {
+app.get('https://tea-time-vert.vercel.app/collection', async (req, res) => {
   try {
     let teas = await Teas.find({})
     res.send(teas)
