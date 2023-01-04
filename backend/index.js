@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: "https://tea-time-vert.vercel.app",
+  origin: "http://localhost:4000",
   credentials: true,
   resave: false,
   saveUninitialized: false,
