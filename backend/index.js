@@ -42,15 +42,17 @@ app.use(cors({
 
 app.use(cookieParser('earlgrey'));
 
+require('dotenv').config({path: './config/.env'})
+
 
 /////////////////////////////////
 
 
 
 // Connecting mongoDB Database
-const DB_STRING = 'mongodb+srv://teatime:earlgrey@cluster0.qnl5hfj.mongodb.net/?retryWrites=true&w=majority'
+
 mongoose
-  .connect(DB_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.DB_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to database")
   })
@@ -235,7 +237,7 @@ app.delete('/deleteTea', async(req,res) => {
 })
 
 // PORT
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
