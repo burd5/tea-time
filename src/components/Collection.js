@@ -28,7 +28,7 @@ function Collection() {
   const userID = localStorage.getItem('userID')
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/collection`).then(res => {
+    axios.get(`https://localhost:4000/collection`).then(res => {
       setTeas(res.data);
     })
   }, [])
