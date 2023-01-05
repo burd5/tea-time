@@ -13,12 +13,11 @@ const Teas = require('./Models/Teas');
 const User = require('./Models/User');
 const { response } = require('express');
 const ObjectId = require('mongodb').ObjectId;
-const path = require('path')
 
 const app = express();
 
 require('./config/passport')(passport);
-require('dotenv').config({path: path.resolve('./config/.env')})
+require('dotenv').config({path: './config/.env'})
 
 // Middleware
 app.use(session({
