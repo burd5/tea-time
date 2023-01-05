@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', "https://teatime-4p3o.onrender.com"],
   credentials: true,
   resave: false,
   saveUninitialized: false,
@@ -147,10 +147,9 @@ app.get('/userCollection', async function(req, res){
     console.log(error)
   }});
 
-app.get('/api/collection', async (req, res) => {
+app.get('/collection', async (req, res) => {
   try {
     let teas = await Teas.find({})
-    console.log(teas)
     res.send(teas)
   } catch (error) {
     console.log(error)
