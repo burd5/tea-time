@@ -31,9 +31,10 @@ function Collection() {
 
   useEffect(() => {
     axios.get(url).then(res => {
+      console.log(res.data)
       setTeas(res.data);
     })
-  }, [])
+  })
 
   useEffect(() => {
     window.scrollTo(0,0);
