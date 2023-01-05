@@ -14,6 +14,7 @@ const User = require('./Models/User');
 const { response } = require('express');
 const ObjectId = require('mongodb').ObjectId;
 
+require('dotenv').config({path: './config/.env'})
 
 const app = express();
 
