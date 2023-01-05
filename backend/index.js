@@ -6,7 +6,7 @@ const validator = require('validator')
 const passport = require('passport');
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require('cookie-parser');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const session = require('express-session')
 let bodyParser = require('body-parser');
 const Teas = require('./Models/Teas');
@@ -14,12 +14,10 @@ const User = require('./Models/User');
 const { response } = require('express');
 const ObjectId = require('mongodb').ObjectId;
 
-require('dotenv').config({path: './config/.env'})
-
 const app = express();
 
-
 require('./config/passport')(passport);
+require('dotenv').config({path: './config/.env'})
 
 // Middleware
 app.use(session({
@@ -42,8 +40,6 @@ app.use(cors({
 }))
 
 app.use(cookieParser('earlgrey'));
-
-require('dotenv').config({path: './config/.env'})
 
 
 /////////////////////////////////
