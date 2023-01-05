@@ -27,14 +27,12 @@ function Collection() {
   const user = useUserStore((state) => state.user)
   const userID = localStorage.getItem('userID')
 
-  const url = `${process.env.REACT_APP_API_URL}/collection`
-
+  
   useEffect(() => {
-    axios.get(url).then(res => {
-      console.log(res.data)
+    axios.get('http://localhost:4000/collection').then(res => {
       setTeas(res.data);
     })
-  })
+  }, [])
 
   useEffect(() => {
     window.scrollTo(0,0);
