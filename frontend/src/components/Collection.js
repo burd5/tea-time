@@ -27,8 +27,10 @@ function Collection() {
   const user = useUserStore((state) => state.user)
   const userID = localStorage.getItem('userID')
 
+  const url = `${process.env.REACT_APP_API_URL}/collection`
+
   useEffect(() => {
-    axios.get('http://localhost:4000/collection').then(res => {
+    axios.get(url).then(res => {
       setTeas(res.data);
     })
   }, [])
