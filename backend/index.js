@@ -9,12 +9,14 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const session = require('express-session')
 let bodyParser = require('body-parser');
+const dotenv = require('dotenv')
 const Teas = require('./Models/Teas');
 const User = require('./Models/User');
 const { response } = require('express');
 const ObjectId = require('mongodb').ObjectId;
 
 const app = express();
+dotenv.config()
 
 require('./config/passport')(passport);
 require('dotenv').config({path: './config/.env'})
@@ -145,9 +147,10 @@ app.get('/userCollection', async function(req, res){
     console.log(error)
   }});
 
-app.get('/collection', async (req, res) => {
+app.get('/api/collection', async (req, res) => {
   try {
     let teas = await Teas.find({})
+    console.log(teas)
     res.send(teas)
   } catch (error) {
     console.log(error)
