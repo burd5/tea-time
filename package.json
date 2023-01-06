@@ -1,0 +1,23 @@
+{
+    "name": "nameofyourapp",
+    "version": "1.0.0",
+    "description": "some description",
+    "main": "./backend/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "cd ./backend && node index.js"
+    },
+    "engines": {
+      "node": "16.x"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^16.0.0",
+      "express": "^4.17.2",
+      "mongoose": "^6.2.1",
+      "validator": "^13.7.0"
+    }
+  }
