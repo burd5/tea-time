@@ -29,7 +29,7 @@ function Collection() {
 
   
   useEffect(() => {
-    axios.get('http://localhost:4000/collection').then(res => {
+    axios.get(`${process.env.DB_URL}/collection`).then(res => {
       setTeas(res.data);
     })
   }, [])

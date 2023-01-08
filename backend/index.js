@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: ['http://localhost:3000', "https://teatime-4p3o.onrender.com"],
+  origin: 'http://localhost:3000',
   credentials: true,
   resave: false,
   saveUninitialized: false,
@@ -237,7 +237,7 @@ app.delete('/deleteTea', async(req,res) => {
 
 // PORT
 const port = process.env.PORT;
-const server = app.listen(port, () => {
+const server = app.listen(port || 4000, () => {
   console.log('Connected to port ' + port)
 })
 
