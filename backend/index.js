@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://tea-time-backend.onrender.com',
   credentials: true,
   resave: false,
   saveUninitialized: false,
