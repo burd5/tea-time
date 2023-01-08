@@ -29,7 +29,7 @@ function Collection() {
 
   
   useEffect(() => {
-    axios.get(`${process.env.DB_URL}/collection`).then(res => {
+    axios.get('https://tea-time-backend.onrender.com/collection').then(res => {
       setTeas(res.data);
     })
   }, [])
