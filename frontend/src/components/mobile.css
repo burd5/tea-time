@@ -3,13 +3,11 @@
 }
 
 .dropdownList{
-    color: rgb(60, 11, 69);
+    color: black;
     background-color: rgb(255, 247, 178);
+    font-weight: bold;
 }
 
-.menuIcon{
-    color: rgb(60, 11, 69);
-}
 
 .mug2{
     height: 50px;
