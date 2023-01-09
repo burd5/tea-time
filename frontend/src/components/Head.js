@@ -20,7 +20,7 @@ export default function Head() {
   }, [setUser]);
 
   const logout = async (req, res) => {
-    await axios.get(`http://localhost:4000/logout`).then(res => {
+    await axios.get(`https://tea-time-backend.onrender.com/logout`).then(res => {
       if(res.data === "Logged out"){
         localStorage.clear()
         setUser('')
