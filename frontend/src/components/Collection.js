@@ -32,8 +32,8 @@ function Collection() {
 
   
   useEffect(() => {
+    setIsLoading(true)
     axios.get('https://teatime.cyclic.app/collection').then(res => {
-      setIsLoading(true)
       setTeas(res.data);
       setIsLoading(false)
     })
