@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(cors({
-  origin: 'https://teatime-4p3o.onrender.com/',
+  origin: 'https://teatime-4p3o.onrender.com',
   credentials: true,
   resave: false,
   saveUninitialized: false,
