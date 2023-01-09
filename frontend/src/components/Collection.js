@@ -5,6 +5,8 @@ import axios from "axios";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Head from './Head'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import { useUserStore } from './useStore'
 import { Link, useNavigate } from "react-router-dom";
 
@@ -23,6 +25,7 @@ function Collection() {
   const [regionHead, setRegionHead] = useState('')
   const [caffeineHead, setCaffeineHead] = useState('')
   const [conditionValues, setConditionValues] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
   const userID = localStorage.getItem('userID')
@@ -30,7 +33,9 @@ function Collection() {
   
   useEffect(() => {
     axios.get('https://teatime.cyclic.app/collection').then(res => {
+      setIsLoading(true)
       setTeas(res.data);
+      setIsLoading(false)
     })
   }, [])
 
@@ -142,6 +147,7 @@ function Collection() {
       )}
       </Formik>
     <div>
+    {isLoading === true ? <Box><CircularProgress /></Box> : <div></div>}
     <div className="matchResultDiv" style={{display: 'none'}}>
     {match.length === 0 || conditionValues.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + value.slice(1) + ' ' + '&' + ' ' : value[0].toUpperCase() + value.slice(1))})</span></h2>}
     {match.length === 0 ? <div style={{display: 'none'}} className="teaList"></div> : <div className="teaList">
