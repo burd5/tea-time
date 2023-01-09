@@ -17,7 +17,7 @@ const AnswersSchema = Yup.object().shape({
 
 function TeaGenerator(){
 
-  const url = `https://tea-time-backend.onrender.com/teas`;
+  const url = `https://teatime.cyclic.app/teas`;
   const [teas, setTeas] = useState([]);
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
@@ -43,7 +43,7 @@ function TeaGenerator(){
   })}
 
   const addToCollection = async (res) => {
-    await axios.post(`https://tea-time-backend.onrender.com/addTea`, userID, {
+    await axios.post(`https://teatime.cyclic.app/addTea`, userID, {
       params: {
         id: teas[0]._id,
         user: userID

@@ -29,7 +29,7 @@ function Collection() {
 
   
   useEffect(() => {
-    axios.get('https://tea-time-backend.onrender.com/collection').then(res => {
+    axios.get('https://teatime.cyclic.app/collection').then(res => {
       setTeas(res.data);
     })
   }, [])
@@ -47,7 +47,7 @@ function Collection() {
   const handleClose = () => setOpen(false);
 
   const addToCollection = async (res) => {
-    await axios.post('https://tea-time-backend.onrender.com/addTea', {modalTea}, {
+    await axios.post('https://teatime.cyclic.app/addTea', {modalTea}, {
       params: {
         id: modalTea._id,
         user: userID
@@ -59,7 +59,7 @@ function Collection() {
   }
 
   const filterCollection = async (values, res) => {
-    await axios.get('https://tea-time-backend.onrender.com/filter', {
+    await axios.get('https://teatime.cyclic.app/filter', {
       params: {
         type: values.type,
         flavor: values.flavor,

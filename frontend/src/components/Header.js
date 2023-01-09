@@ -14,7 +14,7 @@ function Header() {
       }, [])
 
     const logout = async (req, res) => {
-        await axios.get(`http://localhost:4000/logout`).then(res => {
+        await axios.get(`https://teatime.cyclic.app/logout`).then(res => {
           if(res.data === "Logged out"){
             localStorage.clear()
             setUser('')

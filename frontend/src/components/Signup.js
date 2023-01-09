@@ -6,7 +6,7 @@ import {useUserStore} from './useStore'
 function Signup() {
 
     const navigate = useNavigate()
-    const url = `https://tea-time-backend.onrender.com/signup`;
+    const url = `https://teatime.cyclic.app/signup`;
     const [username, setRegisterUsername] = useState('')
     const [password, setRegisterPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')

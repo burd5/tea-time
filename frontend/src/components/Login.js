@@ -8,7 +8,7 @@ import { useUserStore } from './useStore'
 function Login() {
 
     const navigate = useNavigate();
-    const url = 'https://tea-time-backend.onrender.com/login';
+    const url = 'https://teatime.cyclic.app/login';
     const [username, setLoginUsername] = useState('')
     const [password, setLoginPassword] = useState('')
     const [errors, setError] = useState('')
