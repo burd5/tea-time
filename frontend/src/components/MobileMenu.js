@@ -54,13 +54,13 @@ export default function MobileMenu() {
           <Link to={item.link} key={index}>
           <ListItem>
             <ListItemIcon sx={{color: 'white'}}>{item.icon}</ListItemIcon>
-            <ListItemText sx={{fontSize: 36}} onClick={item.action} primary={item.name} />
+            <ListItemText onClick={item.action} primary={item.name} />
           </ListItem>
           </Link>
         )) : loggedOut.map((item, index) => (
           <Link to={item.link} key={index}>
           <ListItem>
-            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemIcon sx={{color: 'white'}}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
           </Link>
