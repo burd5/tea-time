@@ -2,6 +2,11 @@
     display: none;
 }
 
+.dropdownList{
+    color: rgb(60, 11, 69);
+    background-color: rgb(255, 247, 178);
+}
+
 .mug2{
     height: 50px;
     width: 50px;
