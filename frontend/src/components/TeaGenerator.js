@@ -17,7 +17,7 @@ const AnswersSchema = Yup.object().shape({
 
 function TeaGenerator(){
 
-  const url = `http://localhost:4000/teas`;
+  const url = `https://tea-time-backend.onrender.com/teas`;
   const [teas, setTeas] = useState([]);
   const navigate = useNavigate()
   const user = useUserStore((state) => state.user)
