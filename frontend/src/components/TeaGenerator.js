@@ -43,7 +43,7 @@ function TeaGenerator(){
   })}
 
   const addToCollection = async (res) => {
-    await axios.post(`http://localhost:4000/addTea`, userID, {
+    await axios.post(`https://tea-time-backend.onrender.com/addTea`, userID, {
       params: {
         id: teas[0]._id,
         user: userID

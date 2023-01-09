@@ -15,7 +15,7 @@ export default function Profile() {
  
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/userCollection`, {
+    axios.get(`https://tea-time-backend.onrender.com/userCollection`, {
       params: {
         userID: userID
       }})
@@ -33,7 +33,7 @@ export default function Profile() {
   const handleClose = () => setOpen(false);
 
   const deleteFromCollection = async (res) => {
-    await axios.delete(`http://localhost:4000/deleteTea`, {
+    await axios.delete(`https://tea-time-backend.onrender.com/deleteTea`, {
       params: {
         id: modalTea._id,
         user: userID
