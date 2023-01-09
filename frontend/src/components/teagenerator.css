@@ -188,4 +188,9 @@ label{
         display: flex;
         flex-direction: column;
     }
+    .teaResults img{
+        width: 400px;
+        height: 300px;
+        margin: 0 auto;
+    }
 }
