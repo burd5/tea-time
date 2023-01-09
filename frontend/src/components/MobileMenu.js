@@ -7,7 +7,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
-import BuildIcon from '@mui/icons-material/Build';
+import CasinoIcon from '@mui/icons-material/Casino';
 import { Link, useNavigate } from "react-router-dom"
 import { useUserStore } from './useStore'
 import axios from 'axios'
@@ -33,13 +33,13 @@ export default function MobileMenu() {
   const loggedIn = [
     { name: "Profile", icon: <AccountBoxIcon />, link: '/profile' },
     { name: "Collection", icon: <BookmarksIcon />, link: '/collection' },
-    { name: "Tea Generator", icon: <BuildIcon />, link: '/teagenerator'},
+    { name: "Tea Generator", icon: <CasinoIcon />, link: '/teagenerator'},
     { name: "Logout", icon: <LogoutIcon />, action: logout}
   ];
 
   const loggedOut = [
     { name: "Collection", icon: <BookmarksIcon />, link: '/collection' },
-    { name: "Tea Generator", icon: <BuildIcon />, link: '/teagenerator'},
+    { name: "Tea Generator", icon: <CasinoIcon />, link: '/teagenerator'},
     { name: "Sign In", icon: <LoginIcon />, link: '/login' },
   ];
 
