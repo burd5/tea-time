@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Head from './Head'
 import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import { useUserStore } from './useStore'
 import { Link, useNavigate } from "react-router-dom";
 
