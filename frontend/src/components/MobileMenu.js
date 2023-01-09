@@ -53,7 +53,7 @@ export default function MobileMenu() {
         {user !== '' ? loggedIn.map((item, index) => (
           <Link to={item.link} key={index}>
           <ListItem>
-            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemIcon style={{color: 'purple'}}>{item.icon}</ListItemIcon>
             <ListItemText onClick={item.action} primary={item.name} />
           </ListItem>
           </Link>
