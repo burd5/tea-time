@@ -261,5 +261,11 @@ select {
     .collectionsTitle{
         font-size: 80px;
     }
+    .teaDesc{
+        margin-bottom: 5px;
+    }
+    .filterCat label{
+        font-size: 24px;
+    }
     
 }
