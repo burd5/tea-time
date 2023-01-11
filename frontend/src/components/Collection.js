@@ -147,7 +147,7 @@ function Collection() {
       </Formik>
     <div>
     <div>
-    {isLoading === true ? <Box sx={{ display: 'flex', justifyContent: 'center', margin: 'auto', height: 500  }}><CircularProgress size="100" sx={{ color: 'rgb(60, 11, 69)'}}/></Box> : <div></div>}
+    {isLoading === true ? <Box sx={{ display: 'flex', justifyContent: 'center', margin: 'auto', height: 500  }}><CircularProgress size="10rem" sx={{ color: 'rgb(60, 11, 69)'}}/></Box> : <div></div>}
     </div>
     <div className="matchResultDiv" style={{display: 'none'}}>
     {match.length === 0 || conditionValues.length === 0 ? <div><h2 className="searchHeader">Exact Match</h2><h5 className="font-sans text-2xl mb-10">No exact matches for your search</h5></div> : <h2 className="searchHeader">Exact Match <span>({conditionValues.map( (value,index) => index !== conditionValues.length - 1 ? value[0].toUpperCase() + value.slice(1) + ' ' + '&' + ' ' : value[0].toUpperCase() + value.slice(1))})</span></h2>}
