@@ -193,4 +193,7 @@ label{
         height: auto;
         margin: 0 auto;
     }
+    .teaResults{
+        width: 100%;
+    }
 }
