@@ -25,7 +25,7 @@ export default function Profile() {
     .then(res => {
       setTeas(res.data);
       setIsLoading(false)
-      document.querySelector('.profTeaList').style.display = 'block'
+      document.querySelector('.profTeaList').style.display = 'flex'
     })
   }, [userID])
 
