@@ -196,10 +196,8 @@ label{
     .teaResults{
         width: 100%;
     }
-    .teaItem{
+    .teaFormDiv{
         padding: 5px;
     }
-    .teaForm{
-        width: 85%;
-    }
+
 }
