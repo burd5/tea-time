@@ -196,4 +196,7 @@ label{
     .teaResults{
         width: 100%;
     }
+    .teaItem{
+        padding: 0px;
+    }
 }
