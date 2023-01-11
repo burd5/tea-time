@@ -14,3 +14,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@media (hover: none) {
+  button:hover { color: inherit; }
+  .teaButton:hover { color: inherit; }
+}
