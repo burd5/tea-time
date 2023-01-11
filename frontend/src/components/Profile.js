@@ -3,6 +3,7 @@ import axios from 'axios'
 import './collection.css'
 import Head from '../components/Head'
 import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Modal from '@mui/material/Modal';
 
 
@@ -11,16 +12,19 @@ export default function Profile() {
   const [teas, setTeas] = useState([]);
   const [modalTea, setModalTea] = useState('')
   const [modalFlavors, setModalFlavors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const userID = localStorage.getItem('userID')
  
 
   useEffect(() => {
+    setIsLoading(true)
     axios.get(`https://teatime.cyclic.app/userCollection`, {
       params: {
         userID: userID
       }})
     .then(res => {
       setTeas(res.data);
+      setIsLoading(false)
     })
   }, [userID])
 
@@ -49,6 +53,9 @@ export default function Profile() {
     <div className="collections">
         <Head />
         <h1>Favorites</h1>
+        <div>
+    {isLoading === true ? <Box sx={{ display: 'flex', justifyContent: 'center', margin: 'auto', height: 500  }}><CircularProgress size="10rem" sx={{ color: 'rgb(60, 11, 69)'}}/></Box> : <div></div>}
+    </div>
         <div className="teaList">
         {teas.length > 0 ? teas.map(c => <div className="teaDesc" key={c._id}>
           <ul>
