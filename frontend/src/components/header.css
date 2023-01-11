@@ -78,3 +78,7 @@ button:hover{
     }
 
 }
+
+@media (hover: none) {
+    button:hover { color: rgb(60, 11, 69); background-color: white; }
+  }
