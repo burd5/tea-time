@@ -267,5 +267,19 @@ select {
     .filterCat label{
         font-size: 24px;
     }
-    
 }
+
+@media (hover: none) {
+    .modalTeaButton:hover{
+        background-color: rgb(60, 11, 69);
+        color: #fff;
+    }
+    .teaButton:hover{
+        background-color: rgb(60, 11, 69);
+        color: #fff;
+    }
+    .trashTeaButton:hover{
+        background-color: rgb(60, 11, 69);
+        color: white;
+    }
+  }
