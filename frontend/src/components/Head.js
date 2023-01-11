@@ -34,7 +34,7 @@ export default function Head() {
             <ul className="navMobile flex justify-between items-center">
                 <Link to={'/'}>
                 <div className="flex items-center">
-                <img src="../../../public/teamug.png" className='mug1 fas fa-mug-hot mr-5' alt="logo"></img><li className="logo inline-block">{ user === '' ? 'Tea Time' : user}</li>
+                <img src="teamug.png" className='mug1 fas fa-mug-hot mr-5' alt="logo"></img><li className="logo inline-block">{ user === '' ? 'Tea Time' : user}</li>
                 </div>
                 </Link>
                 <MobileMenu />

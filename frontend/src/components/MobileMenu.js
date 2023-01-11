@@ -70,7 +70,7 @@ export default function MobileMenu() {
 
     return (
       <div className="dropdown">
-        <img onClick={() => setOpen(true)} src="../../../public/teamug.png" className='mug2 block fas fa-mug-hot' alt="logo"></img>
+        <img onClick={() => setOpen(true)} src="teamug.png" className='mug2 block fas fa-mug-hot' alt="logo"></img>
         <Drawer open={open} anchor={"top"} onClose={() => setOpen(false)}>
           {getList()}
         </Drawer>
