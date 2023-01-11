@@ -25,6 +25,7 @@ export default function Profile() {
     .then(res => {
       setTeas(res.data);
       setIsLoading(false)
+      document.querySelector('.profTeaList').style.display = 'block'
     })
   }, [userID])
 
@@ -54,9 +55,9 @@ export default function Profile() {
         <Head />
         <h1>Favorites</h1>
         <div>
-    {isLoading === true ? <Box sx={{ display: 'flex', justifyContent: 'center', margin: 'auto', height: 500  }}><CircularProgress size="10rem" sx={{ color: 'rgb(60, 11, 69)'}}/></Box> : <div></div>}
-    </div>
-        <div className="teaList">
+          {isLoading === true ? <Box sx={{ display: 'flex', justifyContent: 'center', margin: 'auto', height: 500  }}><CircularProgress size="10rem" sx={{ color: 'rgb(60, 11, 69)'}}/></Box> : <div></div>}
+        </div>
+        <div className="profTeaList">
         {teas.length > 0 ? teas.map(c => <div className="teaDesc" key={c._id}>
           <ul>
               <img className="teaListImg" src={c.img} alt="" />
