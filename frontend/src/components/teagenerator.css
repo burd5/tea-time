@@ -20,13 +20,11 @@
     background: #fff;
     margin: 0 auto;
     border: 2px solid rgb(60, 11, 69);
-    width: fit-content;
-    padding: 20px;
     border-radius: 10px;
     margin-top: 60px;
     padding-bottom: 160px;
-    padding: 50px;
-    width: 60%;
+    padding: 10px;
+    width: 70%;
     align-items: center;
 }
 
@@ -195,9 +193,6 @@ label{
     }
     .teaResults{
         width: 100%;
-    }
-    .teaItem{
-        padding: 0px;
     }
 
 }
